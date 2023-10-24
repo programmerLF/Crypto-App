@@ -1,20 +1,16 @@
-import 'package:equatable/equatable.dart';
 
-class CryptoCoins extends Equatable {
+class CryptoCoins {
   final String key;
   final String name;
   final String symbol;
   final int rank;
-
-  // might be a number or null so how am i supposed to specify it?
-  final String maxSupply;
+  final num? maxSupply;
   final num totalSupply;
-
   // is active will contain 0 or 1 to specify the status.
-  final int isActive;
+  final bool isActive;
   final num high24h;
   final num low24h;
-  final Map<String, dynamic> quote;
+  final Map<String, num> quote;
   final String logo;
   final String link;
 
@@ -31,20 +27,4 @@ class CryptoCoins extends Equatable {
       required this.quote,
       required this.logo,
       required this.link});
-
-  @override
-  List<Object?> get props => [
-        key,
-        name,
-        symbol,
-        rank,
-        maxSupply,
-        totalSupply,
-        isActive,
-        high24h,
-        low24h,
-        quote,
-        logo,
-        link
-      ];
 }

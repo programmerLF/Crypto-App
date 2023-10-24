@@ -5,6 +5,6 @@ import 'package:dartz/dartz.dart';
 abstract class CryptoCoinsRepository{
 
   // this method will fetch the coins from the api or the stored local data
-  Future<Either<Failure, List<CryptoCoins>>> getCryptoCoins();
+  Future<Either<Failure, List<CryptoCoins>>> getCryptoCoinsList();
 
 }
