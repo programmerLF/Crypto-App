@@ -1,14 +1,23 @@
-
+import 'package:crypto_app/core/error/exceptions.dart';
 import 'package:crypto_app/core/error/failure.dart';
-import 'package:crypto_app/features/crypto_coins/domain/entities/crypto_coins.dart';
+import 'package:crypto_app/features/crypto_coins/data/data_sources/crypro_coins_remote_data_source.dart';
+import 'package:crypto_app/features/crypto_coins/data/models/crypto_coins_model.dart';
 import 'package:crypto_app/features/crypto_coins/domain/repositories/crypto_coins_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
-class CryptoCoinsRepositoryImp implements CryptoCoinsRepository{
+@Injectable(as: CryptoCoinsRepository)
+class CryptoCoinsRepositoryImp implements CryptoCoinsRepository {
+  final CryptoCoinsRemoteDataSource cryptoCoinsRemoteDataSource;
+
+  CryptoCoinsRepositoryImp(this.cryptoCoinsRemoteDataSource);
+
   @override
-  Future<Either<Failure, List<CryptoCoins>>> getCryptoCoinsList() {
-    // TODO: implement getCryptoCoins
-    throw UnimplementedError();
+  Future<Either<Failure, List<CryptoCoinsModel>>> getCryptoCoinsList() async {
+    try {
+      return right(await cryptoCoinsRemoteDataSource.getCryptoCoinsList());
+    } on ServerException {
+      return left(ServerFailure());
+    }
   }
-
 }
