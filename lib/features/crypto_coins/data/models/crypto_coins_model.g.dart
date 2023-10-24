@@ -15,7 +15,7 @@ _$CryptoCoinsModelImpl _$$CryptoCoinsModelImplFromJson(
       rank: json['rank'] as int,
       maxSupply: json['maxSupply'] as num?,
       totalSupply: json['totalSupply'] as num,
-      isActive: json['isActive'] as bool,
+      isActive: json['isActive'] as int,
       high24h: json['high24h'] as num,
       low24h: json['low24h'] as num,
       quote: Map<String, num>.from(json['quote'] as Map),

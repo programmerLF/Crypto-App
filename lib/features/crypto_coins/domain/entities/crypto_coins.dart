@@ -7,7 +7,7 @@ class CryptoCoins {
   final num? maxSupply;
   final num totalSupply;
   // is active will contain 0 or 1 to specify the status.
-  final bool isActive;
+  final int isActive;
   final num high24h;
   final num low24h;
   final Map<String, num> quote;

@@ -13,7 +13,7 @@ class CryptoCoinsModel extends CryptoCoins with _$CryptoCoinsModel {
     required int rank,
     required num? maxSupply,
     required num totalSupply,
-    required bool isActive,
+    required int isActive,
     required num high24h,
     required num low24h,
     required Map<String, num> quote,

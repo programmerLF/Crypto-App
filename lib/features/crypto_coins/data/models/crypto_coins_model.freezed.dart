@@ -26,7 +26,7 @@ mixin _$CryptoCoinsModel {
   int get rank => throw _privateConstructorUsedError;
   num? get maxSupply => throw _privateConstructorUsedError;
   num get totalSupply => throw _privateConstructorUsedError;
-  bool get isActive => throw _privateConstructorUsedError;
+  int get isActive => throw _privateConstructorUsedError;
   num get high24h => throw _privateConstructorUsedError;
   num get low24h => throw _privateConstructorUsedError;
   Map<String, num> get quote => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $CryptoCoinsModelCopyWith<$Res> {
       int rank,
       num? maxSupply,
       num totalSupply,
-      bool isActive,
+      int isActive,
       num high24h,
       num low24h,
       Map<String, num> quote,
@@ -114,7 +114,7 @@ class _$CryptoCoinsModelCopyWithImpl<$Res, $Val extends CryptoCoinsModel>
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as int,
       high24h: null == high24h
           ? _value.high24h
           : high24h // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ abstract class _$$CryptoCoinsModelImplCopyWith<$Res>
       int rank,
       num? maxSupply,
       num totalSupply,
-      bool isActive,
+      int isActive,
       num high24h,
       num low24h,
       Map<String, num> quote,
@@ -214,7 +214,7 @@ class __$$CryptoCoinsModelImplCopyWithImpl<$Res>
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as int,
       high24h: null == high24h
           ? _value.high24h
           : high24h // ignore: cast_nullable_to_non_nullable
@@ -273,7 +273,7 @@ class _$CryptoCoinsModelImpl implements _CryptoCoinsModel {
   @override
   final num totalSupply;
   @override
-  final bool isActive;
+  final int isActive;
   @override
   final num high24h;
   @override
@@ -358,7 +358,7 @@ abstract class _CryptoCoinsModel implements CryptoCoinsModel {
       required final int rank,
       required final num? maxSupply,
       required final num totalSupply,
-      required final bool isActive,
+      required final int isActive,
       required final num high24h,
       required final num low24h,
       required final Map<String, num> quote,
@@ -381,7 +381,7 @@ abstract class _CryptoCoinsModel implements CryptoCoinsModel {
   @override
   num get totalSupply;
   @override
-  bool get isActive;
+  int get isActive;
   @override
   num get high24h;
   @override
