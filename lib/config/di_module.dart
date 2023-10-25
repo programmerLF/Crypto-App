@@ -1,6 +1,7 @@
 import 'package:crypto_app/core/constant_values.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 @module
 abstract class ProductionAppModule {
@@ -9,7 +10,9 @@ abstract class ProductionAppModule {
     dio.interceptors.add(HeaderInterceptors());
     return dio;
   }
+  InternetConnectionChecker internetChecker() => InternetConnectionChecker();
 }
+
 
 class HeaderInterceptors extends Interceptor {
   @override
@@ -17,7 +20,15 @@ class HeaderInterceptors extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    options.headers.addAll({apiKeyHeader: apiKey, apiHostHeader: apiHost});
+    options.headers.addAll({apiKeyHeader: apiKey,
+
+      apiHostHeader: apiHost,
+      hostTest: apiHost});
     handler.next(options);
+  }
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+
+    super.onResponse(response, handler);
   }
 }

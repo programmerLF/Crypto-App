@@ -1,4 +1,5 @@
 import 'package:crypto_app/core/constant_values.dart';
+import 'package:crypto_app/features/crypto_coins/data/models/coin.dart';
 import 'package:crypto_app/features/crypto_coins/data/models/crypto_coins_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -10,10 +11,10 @@ part 'rest_client.g.dart';
 @RestApi()
 abstract class RestClient {
   @factoryMethod
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
+  factory RestClient(Dio dio) = _RestClient;
 
   @GET('/coins')
-  Future<List<CryptoCoinsModel>> getCryptoCoinsList();
+  Future<CryptoCoinsResponseModel> getCryptoCoinsList();
 }
 
 

@@ -31,13 +31,12 @@ class SelectedCoin extends CryptoCoinsState {
   @override
   List<Object?> get props => [coin];
 }
-class Error extends CryptoCoinsState{
+
+class Error extends CryptoCoinsState {
   final String errorMsg;
 
   const Error({required this.errorMsg});
 
   @override
   List<Object?> get props => [errorMsg];
-
-
 }

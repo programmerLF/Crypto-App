@@ -14,6 +14,138 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+/// @nodoc
+mixin _$CryptoCoinsResultModel {
+  List<CryptoCoinsModel>? get coins => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CryptoCoinsResultModelCopyWith<CryptoCoinsResultModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CryptoCoinsResultModelCopyWith<$Res> {
+  factory $CryptoCoinsResultModelCopyWith(CryptoCoinsResultModel value,
+          $Res Function(CryptoCoinsResultModel) then) =
+      _$CryptoCoinsResultModelCopyWithImpl<$Res, CryptoCoinsResultModel>;
+  @useResult
+  $Res call({List<CryptoCoinsModel>? coins});
+}
+
+/// @nodoc
+class _$CryptoCoinsResultModelCopyWithImpl<$Res,
+        $Val extends CryptoCoinsResultModel>
+    implements $CryptoCoinsResultModelCopyWith<$Res> {
+  _$CryptoCoinsResultModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? coins = freezed,
+  }) {
+    return _then(_value.copyWith(
+      coins: freezed == coins
+          ? _value.coins
+          : coins // ignore: cast_nullable_to_non_nullable
+              as List<CryptoCoinsModel>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CryptoCoinsResultModelImplCopyWith<$Res>
+    implements $CryptoCoinsResultModelCopyWith<$Res> {
+  factory _$$CryptoCoinsResultModelImplCopyWith(
+          _$CryptoCoinsResultModelImpl value,
+          $Res Function(_$CryptoCoinsResultModelImpl) then) =
+      __$$CryptoCoinsResultModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<CryptoCoinsModel>? coins});
+}
+
+/// @nodoc
+class __$$CryptoCoinsResultModelImplCopyWithImpl<$Res>
+    extends _$CryptoCoinsResultModelCopyWithImpl<$Res,
+        _$CryptoCoinsResultModelImpl>
+    implements _$$CryptoCoinsResultModelImplCopyWith<$Res> {
+  __$$CryptoCoinsResultModelImplCopyWithImpl(
+      _$CryptoCoinsResultModelImpl _value,
+      $Res Function(_$CryptoCoinsResultModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? coins = freezed,
+  }) {
+    return _then(_$CryptoCoinsResultModelImpl(
+      coins: freezed == coins
+          ? _value._coins
+          : coins // ignore: cast_nullable_to_non_nullable
+              as List<CryptoCoinsModel>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CryptoCoinsResultModelImpl implements _CryptoCoinsResultModel {
+  _$CryptoCoinsResultModelImpl({final List<CryptoCoinsModel>? coins})
+      : _coins = coins;
+
+  final List<CryptoCoinsModel>? _coins;
+  @override
+  List<CryptoCoinsModel>? get coins {
+    final value = _coins;
+    if (value == null) return null;
+    if (_coins is EqualUnmodifiableListView) return _coins;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'CryptoCoinsResultModel(coins: $coins)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CryptoCoinsResultModelImpl &&
+            const DeepCollectionEquality().equals(other._coins, _coins));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_coins));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CryptoCoinsResultModelImplCopyWith<_$CryptoCoinsResultModelImpl>
+      get copyWith => __$$CryptoCoinsResultModelImplCopyWithImpl<
+          _$CryptoCoinsResultModelImpl>(this, _$identity);
+}
+
+abstract class _CryptoCoinsResultModel implements CryptoCoinsResultModel {
+  factory _CryptoCoinsResultModel({final List<CryptoCoinsModel>? coins}) =
+      _$CryptoCoinsResultModelImpl;
+
+  @override
+  List<CryptoCoinsModel>? get coins;
+  @override
+  @JsonKey(ignore: true)
+  _$$CryptoCoinsResultModelImplCopyWith<_$CryptoCoinsResultModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 CryptoCoinsModel _$CryptoCoinsModelFromJson(Map<String, dynamic> json) {
   return _CryptoCoinsModel.fromJson(json);
 }

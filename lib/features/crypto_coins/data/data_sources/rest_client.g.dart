@@ -19,13 +19,13 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<CryptoCoinsModel>> getCryptoCoinsList() async {
+  Future<CryptoCoinsResponseModel> getCryptoCoinsList() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<CryptoCoinsModel>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CryptoCoinsResponseModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -41,10 +41,7 @@ class _RestClient implements RestClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map(
-            (dynamic i) => CryptoCoinsModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = CryptoCoinsResponseModel.fromJson(_result.data!);
     return value;
   }
 

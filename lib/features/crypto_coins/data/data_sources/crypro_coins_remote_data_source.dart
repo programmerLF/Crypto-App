@@ -19,7 +19,7 @@ class CryptoCoinsRemoteDataSourceImp implements CryptoCoinsRemoteDataSource {
   /// throws server exception in case of server errors.
   Future<List<CryptoCoinsModel>> getCryptoCoinsList() async {
     try {
-      return await _client.getCryptoCoinsList();
+      return (await _client.getCryptoCoinsList()).result!.coins!;
     } on Error {
       throw ServerException();
     }
