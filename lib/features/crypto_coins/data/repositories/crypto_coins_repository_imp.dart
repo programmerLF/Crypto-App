@@ -22,10 +22,10 @@ class CryptoCoinsRepositoryImp implements CryptoCoinsRepository {
       try {
         return right(await cryptoCoinsRemoteDataSource.getCryptoCoinsList());
       } on ServerException {
-        return left(ServerFailure());
+        return left(Failure.server());
       }
     } else {
-      return left(InternetConnectionFailure());
+      return left(Failure.connection());
     }
   }
 }

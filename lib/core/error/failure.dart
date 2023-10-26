@@ -1,15 +1,13 @@
 import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 
-class ServerFailure extends Failure{}
-class CacheFailure extends Failure{}
-class InternetConnectionFailure extends Failure{}
+part 'failure.freezed.dart';
 
-abstract class Failure extends Equatable {
-  List properties = const <dynamic>[];
+@freezed
+class Failure with _$Failure {
 
-  Failure([properties]);
-
-  @override
-  List<Object?> get props => [properties];
+  factory Failure.server() = _ServerFailure;
+  factory Failure.cache() = _CacheFailure;
+  factory Failure.connection() = _InternetConnectionFailure;
 }

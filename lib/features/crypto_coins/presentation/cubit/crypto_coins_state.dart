@@ -1,42 +1,14 @@
-part of 'crypto_coins_cubit.dart';
+import 'package:crypto_app/features/crypto_coins/data/models/crypto_coins_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class CryptoCoinsState extends Equatable {
-  const CryptoCoinsState();
+part 'crypto_coins_state.freezed.dart';
+
+@freezed
+class CryptoCoinsState with _$CryptoCoinsState {
+ factory CryptoCoinsState.empty() = _Empty;
+ factory CryptoCoinsState.loading() = _Loading;
+ factory CryptoCoinsState.loaded(List<CryptoCoinsModel> coinsList) = _Loaded;
+ factory CryptoCoinsState.selectedCoin(CryptoCoinsModel coin) = _SelectedCoin;
+ factory CryptoCoinsState.error({required String errorMsg}) = _Error;
 }
 
-class Empty extends CryptoCoinsState {
-  @override
-  List<Object> get props => [];
-}
-
-class CryptoCoinsLoading extends CryptoCoinsState {
-  @override
-  List<Object?> get props => [];
-}
-
-class CryptoCoinsLoaded extends CryptoCoinsState {
-  final List<CryptoCoinsModel> coinsList;
-
-  const CryptoCoinsLoaded({required this.coinsList});
-
-  @override
-  List<Object?> get props => [coinsList];
-}
-
-class SelectedCoin extends CryptoCoinsState {
-  final CryptoCoinsModel coin;
-
-  const SelectedCoin(this.coin);
-
-  @override
-  List<Object?> get props => [coin];
-}
-
-class Error extends CryptoCoinsState {
-  final String errorMsg;
-
-  const Error({required this.errorMsg});
-
-  @override
-  List<Object?> get props => [errorMsg];
-}
