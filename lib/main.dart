@@ -2,7 +2,6 @@ import 'package:crypto_app/home_view/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'config/init_getit.dart';
-import 'features/crypto_coins/presentation/pages/home_page.dart';
 
 void main() {
   configureDependencies();
