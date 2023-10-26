@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../data/models/crypto_coins_model.dart';
-import '../entities/crypto_coins.dart';
+
 
 
 // Get Crypto Coins List use case:

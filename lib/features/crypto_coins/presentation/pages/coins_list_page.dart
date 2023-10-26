@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:crypto_app/common_widgets/common_widgets.dart';
 import 'package:crypto_app/features/crypto_coins/presentation/pages/coin_details_page.dart';
 import 'package:crypto_app/features/crypto_coins/presentation/widgets/widgets.dart';
@@ -26,7 +28,7 @@ class CoinsListPage extends StatelessWidget {
               builder: (context, state) {
                 return state.maybeMap(
                   loaded: (data) => Container(
-                    height: MediaQuery.of(context).size.height - 300,
+                    height: Platform.isIOS? MediaQuery.of(context).size.height - 250 : MediaQuery.of(context).size.height - 230,
                     child: ListView.builder(
                       itemCount: data.coinsList.length,
                       itemBuilder: (context, index) {
@@ -38,7 +40,7 @@ class CoinsListPage extends StatelessWidget {
                             onTap: (){
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) =>  CoinDetailsPage(coin: coin,)));
+                                  MaterialPageRoute(builder: (context) =>  CoinDetailsPage()));
                             },
                             child: Container(
                               decoration: const BoxDecoration(

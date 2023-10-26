@@ -1,9 +1,9 @@
-import 'package:crypto_app/features/crypto_coins/data/models/crypto_coins_model.dart';
+
 import 'package:flutter/material.dart';
 
 class CoinDetailsPage extends StatelessWidget {
-  final CryptoCoinsModel coin;
-  const CoinDetailsPage({super.key, required this.coin});
+
+  const CoinDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
