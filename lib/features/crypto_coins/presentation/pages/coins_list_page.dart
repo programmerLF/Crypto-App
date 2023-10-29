@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:crypto_app/common_widgets/common_widgets.dart';
-import 'package:crypto_app/features/crypto_coins/presentation/pages/coin_details_page.dart';
+import 'package:crypto_app/features/coin_details/presentation/pages/coin_details_page.dart';
 import 'package:crypto_app/features/crypto_coins/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +40,7 @@ class CoinsListPage extends StatelessWidget {
                             onTap: (){
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) =>  CoinDetailsPage()));
+                                  MaterialPageRoute(builder: (context) =>  CoinDetailsPage(coinKey: coin.key, logoUrl: coin.logo,)));
                             },
                             child: Container(
                               decoration: const BoxDecoration(
@@ -56,7 +56,9 @@ class CoinsListPage extends StatelessWidget {
                   ),
                   error: (message) => Text(message.errorMsg),
                   loading: (_) => const LoadingIndicator(),
-                  orElse: () => Container(),
+                  orElse: () => Container(
+                    child: const Text("Unexpected Error"),
+                  ),
                 );
               },
             ),

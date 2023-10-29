@@ -19,20 +19,20 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<CoinProfileModel>> getCoinProfile(String key) async {
+  Future<ApiResponse<CoinQuoteModel>> getCoinQuote(String key) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'key': key};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<CoinProfileModel>>(Options(
+        _setStreamType<ApiResponse<CoinQuoteModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/coin/profile',
+              '/coin/quote',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -41,9 +41,9 @@ class _RestClient implements RestClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<CoinProfileModel>.fromJson(
+    final value = ApiResponse<CoinQuoteModel>.fromJson(
       _result.data!,
-      (json) => CoinProfileModel.fromJson(json as Map<String, dynamic>),
+      (json) => CoinQuoteModel.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

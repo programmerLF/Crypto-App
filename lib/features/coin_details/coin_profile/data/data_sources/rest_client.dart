@@ -3,6 +3,7 @@
 
 
 
+import 'package:crypto_app/config/api_response.dart';
 import 'package:crypto_app/features/coin_details/coin_profile/data/models/coin_profile_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +17,6 @@ abstract class RestClient {
   @factoryMethod
   factory RestClient(Dio dio) = _RestClient;
 
-  @GET('coin/profile')
-  Future<CoinProfileModel> getCoinProfile(@Query("key") key);
+  @GET('/coin/profile')
+  Future<ApiResponse<CoinProfileModel>> getCoinProfile(@Query("key")String key);
 }
