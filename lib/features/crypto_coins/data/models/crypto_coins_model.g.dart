@@ -20,7 +20,7 @@ _$CryptoCoinsModelImpl _$$CryptoCoinsModelImplFromJson(
       low24h: json['low24h'] as num,
       quote: Map<String, num>.from(json['quote'] as Map),
       logo: json['logo'] as String,
-      link: json['link'] as String,
+      link: json['external_link'] as String,
     );
 
 Map<String, dynamic> _$$CryptoCoinsModelImplToJson(
@@ -37,5 +37,5 @@ Map<String, dynamic> _$$CryptoCoinsModelImplToJson(
       'low24h': instance.low24h,
       'quote': instance.quote,
       'logo': instance.logo,
-      'link': instance.link,
+      'external_link': instance.link,
     };

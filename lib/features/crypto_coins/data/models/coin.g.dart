@@ -9,17 +9,17 @@ part of 'coin.dart';
 _$CryptoCoinsResponseModelImpl _$$CryptoCoinsResponseModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CryptoCoinsResponseModelImpl(
-      result:
+      data:
           _$JsonConverterFromJson<Map<String, dynamic>, CryptoCoinsResultModel>(
-              json['result'], const CoinResultConverter().fromJson),
+              json['data'], const CoinResultConverter().fromJson),
     );
 
 Map<String, dynamic> _$$CryptoCoinsResponseModelImplToJson(
         _$CryptoCoinsResponseModelImpl instance) =>
     <String, dynamic>{
-      'result':
+      'data':
           _$JsonConverterToJson<Map<String, dynamic>, CryptoCoinsResultModel>(
-              instance.result, const CoinResultConverter().toJson),
+              instance.data, const CoinResultConverter().toJson),
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

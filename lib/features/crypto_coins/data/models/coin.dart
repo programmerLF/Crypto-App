@@ -9,7 +9,7 @@ part 'coin.g.dart';
 @freezed
 class CryptoCoinsResponseModel with _$CryptoCoinsResponseModel {
   factory CryptoCoinsResponseModel(
-      {@CoinResultConverter() CryptoCoinsResultModel? result}) = _CryptoCoinsResponseModel;
+      {@CoinResultConverter() CryptoCoinsResultModel? data}) = _CryptoCoinsResponseModel;
 
   factory CryptoCoinsResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CryptoCoinsResponseModelFromJson(json);

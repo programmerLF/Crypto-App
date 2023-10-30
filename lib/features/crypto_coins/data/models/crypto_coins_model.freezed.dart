@@ -163,6 +163,7 @@ mixin _$CryptoCoinsModel {
   num get low24h => throw _privateConstructorUsedError;
   Map<String, num> get quote => throw _privateConstructorUsedError;
   String get logo => throw _privateConstructorUsedError;
+  @JsonKey(name: "external_link")
   String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -189,7 +190,7 @@ abstract class $CryptoCoinsModelCopyWith<$Res> {
       num low24h,
       Map<String, num> quote,
       String logo,
-      String link});
+      @JsonKey(name: "external_link") String link});
 }
 
 /// @nodoc
@@ -291,7 +292,7 @@ abstract class _$$CryptoCoinsModelImplCopyWith<$Res>
       num low24h,
       Map<String, num> quote,
       String logo,
-      String link});
+      @JsonKey(name: "external_link") String link});
 }
 
 /// @nodoc
@@ -386,7 +387,7 @@ class _$CryptoCoinsModelImpl implements _CryptoCoinsModel {
       required this.low24h,
       required final Map<String, num> quote,
       required this.logo,
-      required this.link})
+      @JsonKey(name: "external_link") required this.link})
       : _quote = quote;
 
   factory _$CryptoCoinsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -421,6 +422,7 @@ class _$CryptoCoinsModelImpl implements _CryptoCoinsModel {
   @override
   final String logo;
   @override
+  @JsonKey(name: "external_link")
   final String link;
 
   @override
@@ -484,18 +486,19 @@ class _$CryptoCoinsModelImpl implements _CryptoCoinsModel {
 
 abstract class _CryptoCoinsModel implements CryptoCoinsModel {
   factory _CryptoCoinsModel(
-      {required final String key,
-      required final String name,
-      required final String symbol,
-      required final int rank,
-      required final num? maxSupply,
-      required final num totalSupply,
-      required final int isActive,
-      required final num high24h,
-      required final num low24h,
-      required final Map<String, num> quote,
-      required final String logo,
-      required final String link}) = _$CryptoCoinsModelImpl;
+          {required final String key,
+          required final String name,
+          required final String symbol,
+          required final int rank,
+          required final num? maxSupply,
+          required final num totalSupply,
+          required final int isActive,
+          required final num high24h,
+          required final num low24h,
+          required final Map<String, num> quote,
+          required final String logo,
+          @JsonKey(name: "external_link") required final String link}) =
+      _$CryptoCoinsModelImpl;
 
   factory _CryptoCoinsModel.fromJson(Map<String, dynamic> json) =
       _$CryptoCoinsModelImpl.fromJson;
@@ -523,6 +526,7 @@ abstract class _CryptoCoinsModel implements CryptoCoinsModel {
   @override
   String get logo;
   @override
+  @JsonKey(name: "external_link")
   String get link;
   @override
   @JsonKey(ignore: true)

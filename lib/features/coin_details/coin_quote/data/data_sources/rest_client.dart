@@ -15,7 +15,7 @@ abstract class RestClient{
   @factoryMethod
   factory RestClient(Dio dio) = _RestClient;
 
-  @GET('/coin/quote')
+  @GET('/v1/markets/crypto/quotes')
   Future<ApiResponse<CoinQuoteModel>> getCoinQuote(@Query("key")String key);
 
 }

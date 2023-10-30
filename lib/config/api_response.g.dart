@@ -11,7 +11,7 @@ _$ApiResponseDataImpl<T> _$$ApiResponseDataImplFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     _$ApiResponseDataImpl<T>(
-      fromJsonT(json['result']),
+      fromJsonT(readData(json, 'data')),
     );
 
 Map<String, dynamic> _$$ApiResponseDataImplToJson<T>(
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$ApiResponseDataImplToJson<T>(
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
-      'result': toJsonT(instance.result),
+      'data': toJsonT(instance.data),
     };

@@ -13,8 +13,8 @@ abstract class RestClient {
   @factoryMethod
   factory RestClient(Dio dio) = _RestClient;
 
-  @GET('/coins')
-  Future<CryptoCoinsResponseModel> getCryptoCoinsList();
+  @GET('/v1/markets/crypto/coins')
+  Future<CryptoCoinsResponseModel> getCryptoCoinsList({@Query("page")int page = 1});
 }
 
 

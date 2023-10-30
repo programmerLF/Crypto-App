@@ -22,7 +22,7 @@ CryptoCoinsResponseModel _$CryptoCoinsResponseModelFromJson(
 /// @nodoc
 mixin _$CryptoCoinsResponseModel {
   @CoinResultConverter()
-  CryptoCoinsResultModel? get result => throw _privateConstructorUsedError;
+  CryptoCoinsResultModel? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,9 +36,9 @@ abstract class $CryptoCoinsResponseModelCopyWith<$Res> {
           $Res Function(CryptoCoinsResponseModel) then) =
       _$CryptoCoinsResponseModelCopyWithImpl<$Res, CryptoCoinsResponseModel>;
   @useResult
-  $Res call({@CoinResultConverter() CryptoCoinsResultModel? result});
+  $Res call({@CoinResultConverter() CryptoCoinsResultModel? data});
 
-  $CryptoCoinsResultModelCopyWith<$Res>? get result;
+  $CryptoCoinsResultModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -55,25 +55,25 @@ class _$CryptoCoinsResponseModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      result: freezed == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as CryptoCoinsResultModel?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CryptoCoinsResultModelCopyWith<$Res>? get result {
-    if (_value.result == null) {
+  $CryptoCoinsResultModelCopyWith<$Res>? get data {
+    if (_value.data == null) {
       return null;
     }
 
-    return $CryptoCoinsResultModelCopyWith<$Res>(_value.result!, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
+    return $CryptoCoinsResultModelCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
     });
   }
 }
@@ -87,10 +87,10 @@ abstract class _$$CryptoCoinsResponseModelImplCopyWith<$Res>
       __$$CryptoCoinsResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@CoinResultConverter() CryptoCoinsResultModel? result});
+  $Res call({@CoinResultConverter() CryptoCoinsResultModel? data});
 
   @override
-  $CryptoCoinsResultModelCopyWith<$Res>? get result;
+  $CryptoCoinsResultModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -106,12 +106,12 @@ class __$$CryptoCoinsResponseModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? data = freezed,
   }) {
     return _then(_$CryptoCoinsResponseModelImpl(
-      result: freezed == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as CryptoCoinsResultModel?,
     ));
   }
@@ -120,18 +120,18 @@ class __$$CryptoCoinsResponseModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CryptoCoinsResponseModelImpl implements _CryptoCoinsResponseModel {
-  _$CryptoCoinsResponseModelImpl({@CoinResultConverter() this.result});
+  _$CryptoCoinsResponseModelImpl({@CoinResultConverter() this.data});
 
   factory _$CryptoCoinsResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CryptoCoinsResponseModelImplFromJson(json);
 
   @override
   @CoinResultConverter()
-  final CryptoCoinsResultModel? result;
+  final CryptoCoinsResultModel? data;
 
   @override
   String toString() {
-    return 'CryptoCoinsResponseModel(result: $result)';
+    return 'CryptoCoinsResponseModel(data: $data)';
   }
 
   @override
@@ -139,12 +139,12 @@ class _$CryptoCoinsResponseModelImpl implements _CryptoCoinsResponseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CryptoCoinsResponseModelImpl &&
-            (identical(other.result, result) || other.result == result));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -163,7 +163,7 @@ class _$CryptoCoinsResponseModelImpl implements _CryptoCoinsResponseModel {
 
 abstract class _CryptoCoinsResponseModel implements CryptoCoinsResponseModel {
   factory _CryptoCoinsResponseModel(
-          {@CoinResultConverter() final CryptoCoinsResultModel? result}) =
+          {@CoinResultConverter() final CryptoCoinsResultModel? data}) =
       _$CryptoCoinsResponseModelImpl;
 
   factory _CryptoCoinsResponseModel.fromJson(Map<String, dynamic> json) =
@@ -171,7 +171,7 @@ abstract class _CryptoCoinsResponseModel implements CryptoCoinsResponseModel {
 
   @override
   @CoinResultConverter()
-  CryptoCoinsResultModel? get result;
+  CryptoCoinsResultModel? get data;
   @override
   @JsonKey(ignore: true)
   _$$CryptoCoinsResponseModelImplCopyWith<_$CryptoCoinsResponseModelImpl>

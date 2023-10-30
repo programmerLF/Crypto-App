@@ -21,20 +21,21 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
 
 /// @nodoc
 mixin _$ApiResponse<T> {
-  T get result => throw _privateConstructorUsedError;
+  @JsonKey(readValue: readData)
+  T get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T result) data,
+    required TResult Function(@JsonKey(readValue: readData) T data) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T result)? data,
+    TResult? Function(@JsonKey(readValue: readData) T data)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T result)? data,
+    TResult Function(@JsonKey(readValue: readData) T data)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +68,7 @@ abstract class $ApiResponseCopyWith<T, $Res> {
           ApiResponse<T> value, $Res Function(ApiResponse<T>) then) =
       _$ApiResponseCopyWithImpl<T, $Res, ApiResponse<T>>;
   @useResult
-  $Res call({T result});
+  $Res call({@JsonKey(readValue: readData) T data});
 }
 
 /// @nodoc
@@ -83,12 +84,12 @@ class _$ApiResponseCopyWithImpl<T, $Res, $Val extends ApiResponse<T>>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      result: freezed == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as T,
     ) as $Val);
   }
@@ -102,7 +103,7 @@ abstract class _$$ApiResponseDataImplCopyWith<T, $Res>
       __$$ApiResponseDataImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({T result});
+  $Res call({@JsonKey(readValue: readData) T data});
 }
 
 /// @nodoc
@@ -116,12 +117,12 @@ class __$$ApiResponseDataImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = freezed,
+    Object? data = freezed,
   }) {
     return _then(_$ApiResponseDataImpl<T>(
-      freezed == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as T,
     ));
   }
@@ -130,18 +131,19 @@ class __$$ApiResponseDataImplCopyWithImpl<T, $Res>
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$ApiResponseDataImpl<T> implements ApiResponseData<T> {
-  const _$ApiResponseDataImpl(this.result);
+  _$ApiResponseDataImpl(@JsonKey(readValue: readData) this.data);
 
   factory _$ApiResponseDataImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$$ApiResponseDataImplFromJson(json, fromJsonT);
 
   @override
-  final T result;
+  @JsonKey(readValue: readData)
+  final T data;
 
   @override
   String toString() {
-    return 'ApiResponse<$T>.data(result: $result)';
+    return 'ApiResponse<$T>.data(data: $data)';
   }
 
   @override
@@ -149,13 +151,13 @@ class _$ApiResponseDataImpl<T> implements ApiResponseData<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiResponseDataImpl<T> &&
-            const DeepCollectionEquality().equals(other.result, result));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -167,27 +169,27 @@ class _$ApiResponseDataImpl<T> implements ApiResponseData<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T result) data,
+    required TResult Function(@JsonKey(readValue: readData) T data) data,
   }) {
-    return data(result);
+    return data(this.data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T result)? data,
+    TResult? Function(@JsonKey(readValue: readData) T data)? data,
   }) {
-    return data?.call(result);
+    return data?.call(this.data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T result)? data,
+    TResult Function(@JsonKey(readValue: readData) T data)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(result);
+      return data(this.data);
     }
     return orElse();
   }
@@ -227,14 +229,16 @@ class _$ApiResponseDataImpl<T> implements ApiResponseData<T> {
 }
 
 abstract class ApiResponseData<T> implements ApiResponse<T> {
-  const factory ApiResponseData(final T result) = _$ApiResponseDataImpl<T>;
+  factory ApiResponseData(@JsonKey(readValue: readData) final T data) =
+      _$ApiResponseDataImpl<T>;
 
   factory ApiResponseData.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
       _$ApiResponseDataImpl<T>.fromJson;
 
   @override
-  T get result;
+  @JsonKey(readValue: readData)
+  T get data;
   @override
   @JsonKey(ignore: true)
   _$$ApiResponseDataImplCopyWith<T, _$ApiResponseDataImpl<T>> get copyWith =>

@@ -32,7 +32,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              '/coin/profile',
+              '/v1/markets/crypto/profile',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -23,7 +23,7 @@ class CoinQuoteRemoteDataSourceImpl implements CoinQuoteRemoteDataSource{
   @override
   Future<CoinQuoteModel> getCoinQuote(String key) async{
     try{
-      return (await _client.getCoinQuote(key)).result;
+      return (await _client.getCoinQuote(key)).data;
     } on Error{
       throw ServerException();
     }

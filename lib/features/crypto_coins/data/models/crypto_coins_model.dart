@@ -25,7 +25,7 @@ class CryptoCoinsModel extends CryptoCoins with _$CryptoCoinsModel {
     required num low24h,
     required Map<String, num> quote,
     required String logo,
-    required String link,
+   @JsonKey(name: "external_link") required String link,
   }) = _CryptoCoinsModel;
 
   factory CryptoCoinsModel.fromJson(Map<String, dynamic> json) =>

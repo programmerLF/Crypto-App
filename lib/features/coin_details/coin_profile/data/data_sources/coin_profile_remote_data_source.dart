@@ -20,7 +20,7 @@ class CoinProfileRemoteDataSourceImp implements CoinProfileRemoteDataSource{
   @override
   Future<CoinProfileModel> getCoinProfile(String key) async{
     try{
-      return (await _client.getCoinProfile(key)).result;
+      return (await _client.getCoinProfile(key)).data;
     } on Error{
       throw ServerException();
     }
