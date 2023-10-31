@@ -25,6 +25,7 @@ class LineChart extends StatefulWidget {
     required num thirtyDays,
     required num sixtyDays,
     required num ninetyDays,
+    required num year,
   }) {
     return LineChart(
       _priceChangeByDay(
@@ -33,7 +34,8 @@ class LineChart extends StatefulWidget {
           sevenDays: sevenDays,
           thirtyDays: thirtyDays,
           sixtyDays: sixtyDays,
-          ninetyDays: ninetyDays),
+          ninetyDays: ninetyDays,
+          year: year),
       // Disable animations for image tests.
       animate: true,
     );
@@ -50,6 +52,7 @@ class LineChart extends StatefulWidget {
     required num thirtyDays,
     required num sixtyDays,
     required num ninetyDays,
+    required num year,
   }) {
     DateTime currentDate = DateTime.now();
     final data = [
@@ -71,7 +74,7 @@ class LineChart extends StatefulWidget {
           rate: ninetyDays),
       PriceChange(
           duration: currentDate.subtract(const Duration(days: 365)),
-          rate: ninetyDays),
+          rate: year),
 
       // PriceChange(duration: 365, rate: 12.06732905)
     ];
@@ -106,14 +109,13 @@ class _LineChartState extends State<LineChart> {
           symbolRenderer: TextSymbolRenderer(() => value),
           ////////////////////// notice ////////////////////////////
         ),
-         charts.SeriesLegend(),
+        charts.SeriesLegend(),
       ],
       selectionModels: [
         SelectionModelConfig(changedListener: (SelectionModel model) {
           if (model.hasDatumSelection) {
-            value = "${model.selectedSeries[0]
-                .measureFn(model.selectedDatum[0].index)!
-                .toStringAsFixed(2)}%";
+            value =
+                "${model.selectedSeries[0].measureFn(model.selectedDatum[0].index)!.toStringAsFixed(2)}%";
             // setState(() {});
           }
         })

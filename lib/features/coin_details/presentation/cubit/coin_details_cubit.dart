@@ -7,23 +7,18 @@ import 'package:crypto_app/features/coin_details/coin_quote/domain/usecases/get_
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/util/error_messages.dart';
 import 'coin_details_state.dart';
-
-const String SERVER_ERROR_MSG = "Failed to load Coins details";
-const String CONNECTION_ERROR_MSG =
-    "No Internet Connection. Connect to Internet and try again";
-
 
 @injectable
 class CoinDetailsCubit extends Cubit<CoinDetailsState> {
   final GetCoinProfile _getCoinProfileUseCase;
   final GetCoinQuote _getCoinQuoteUseCase;
 
-
   CoinProfileModel? _coinProfileSuccess;
   CoinQuoteModel? _coinQuoteSuccess;
 
-  CoinDetailsCubit( this._getCoinProfileUseCase, this._getCoinQuoteUseCase)
+  CoinDetailsCubit(this._getCoinProfileUseCase, this._getCoinQuoteUseCase)
       : super(CoinDetailsState.loading());
 
   Future<void> getCoinDetails(String key) async {
@@ -62,7 +57,7 @@ class CoinDetailsCubit extends Cubit<CoinDetailsState> {
     return failure.maybeMap(
       server: (_) => SERVER_ERROR_MSG,
       connection: (_) => CONNECTION_ERROR_MSG,
-      orElse: () => "Unexpected Message",
+      orElse: () => UNEXPECTED_ERROR_MSG,
     );
   }
 }

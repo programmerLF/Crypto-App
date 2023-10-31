@@ -2,10 +2,9 @@ import 'package:crypto_app/core/error/failure.dart';
 import 'package:crypto_app/features/crypto_coins/presentation/cubit/crypto_coins_state.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/util/error_messages.dart';
 import '../../domain/usecases/get_crypto_coins_list.dart';
 
-const String SERVER_ERROR_MSG = "Failed to load Cryptocurrency Coins";
-const String CONNECTION_ERROR_MSG = "No Internet Connection. Connect to Internet and try again";
 
 @injectable
 class CryptoCoinsCubit extends Cubit<CryptoCoinsState> {

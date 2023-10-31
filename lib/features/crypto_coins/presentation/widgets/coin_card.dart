@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common_widgets/image_loader.dart';
@@ -79,10 +80,15 @@ class CoinCard extends StatelessWidget {
                           ))),
                           Expanded(
                             child: Center(
-                                child: Text(((MaxSupplyChecker.numOrNull(
-                                        maxSupply: coin.maxSupply)))
-                                    .toStringAsFixed(2))),
-                          ),
+                                child: Text(
+                              "${NumberFormat.decimalPattern()
+                                  .format(MaxSupplyChecker.numOrNull(maxSupply: coin.maxSupply))} ${coin.symbol}"),
+                            )
+                                // Text(((MaxSupplyChecker.numOrNull(
+                                //         maxSupply: coin.maxSupply)))
+                                //     .toStringAsFixed(2)),
+                                ),
+
                           const SizedBox(
                             height: 10,
                           ),
@@ -94,9 +100,14 @@ class CoinCard extends StatelessWidget {
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ))),
                           Expanded(
-                              child: Center(
-                                  child: Text(
-                                      "${coin.totalSupply.toStringAsFixed(2)}"))),
+                            child: Center(
+                              child:
+                                  // Text("${coin.totalSupply.toStringAsFixed(2)}"),
+                                  Text(
+                                "${NumberFormat.decimalPattern()
+                                    .format(coin.totalSupply)} ${coin.symbol}"),
+                            ),
+                          ),
                         ],
                       ),
                     ),
