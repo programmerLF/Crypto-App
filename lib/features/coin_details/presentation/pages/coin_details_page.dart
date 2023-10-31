@@ -87,59 +87,18 @@ class CoinDetailsPage extends StatelessWidget {
                                     child:
                                     Column(
                                       children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text("Max. Supply", style: $bodyText,),
-                                            Text(
-                                              "${NumberFormat.decimalPattern()
-                                                  .format(MaxSupplyChecker.numOrNull(maxSupply: data.coinQuote?.maxSupply??0))} ${data.coinProfile?.symbol??""}", style: $bodyText16Bold,)
-                                          ],
+                                        CoinSupplyDetails(supply: data.coinQuote?.maxSupply??0, symbol: data.coinProfile?.symbol??"", type: "Total",),
+                                        CoinSupplyDetails(supply: data.coinQuote?.totalSupply??0, symbol: data.coinProfile?.symbol??"",type: "Max",),
+                                        MarketCapDetails(
+                                          rate: data.coinQuote!.marketCapChangePercentage24h,
+                                          value: data.coinQuote?.marketCap??0,
+                                          label: "Market Cap",
                                         ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text("Total Supply", style: $bodyText,),
-                                            Text(
-                                              "${NumberFormat.decimalPattern()
-                                                  .format(data.coinQuote?.totalSupply??0)} ${data.coinProfile?.symbol??""}", style: $bodyText16Bold,)
-                                          ],
+                                        MarketCapDetails(
+                                          rate: data.coinQuote!.fullyDilutedMarketCapChangePercentage24h,
+                                          value: data.coinQuote?.fullyDilutedMarketCap??0,
+                                          label: "Diluted Market Cap",
                                         ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text("Market Cap", style: $bodyText,),
-                                            Row(
-                                              children: [
-                                                data.coinQuote!.marketCapChangePercentage24h >= 0 ? Text("${NumberFormat.decimalPattern().format(data.coinQuote?.marketCapChangePercentage24h)}%",
-                                                  style: $highRate,): Text("${NumberFormat.decimalPattern().format(data.coinQuote?.marketCapChangePercentage24h)}%",
-                                                    style: $lowRate),
-                                                const SizedBox(width: 10,),
-                                                Text("${NumberFormat.decimalPattern()
-                                                    .format(
-                                                    data.coinQuote?.marketCap)}\$",style: $bodyText16Bold,),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text("Diluted Market Cap", style: $bodyText,),
-                                            Row(
-                                              children: [
-                                                data.coinQuote!.fullyDilutedMarketCapChangePercentage24h >= 0 ? Text("${NumberFormat.decimalPattern().format(data.coinQuote?.fullyDilutedMarketCapChangePercentage24h)}%",
-                                                  style: $highRate,): Text("${NumberFormat.decimalPattern().format(data.coinQuote?.fullyDilutedMarketCapChangePercentage24h)}%",
-                                                    style: $lowRate),
-                                                const SizedBox(width: 10,),
-                                                Text("${NumberFormat.decimalPattern()
-                                                    .format(
-                                                    data.coinQuote?.fullyDilutedMarketCap)}\$",style: $bodyText16Bold,),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-
 
 
                                       ],
@@ -164,13 +123,15 @@ class CoinDetailsPage extends StatelessWidget {
                                 ),
 
                                 Container(
-                                  height: MediaQuery
+                                  height: data.coinProfile?.description != null ?
+                                  MediaQuery
                                       .of(context)
                                       .size
-                                      .height,
+                                      .height: 0,
+
                                   child: Markdown(
-                                      data:
-                                      data.coinProfile?.description ?? ""),
+
+                                      data: data.coinProfile?.description ?? ""),
                                 ),
                               ],
                             ),
@@ -189,5 +150,9 @@ class CoinDetailsPage extends StatelessWidget {
         ));
   }
 }
+
+
+
+
 
 
