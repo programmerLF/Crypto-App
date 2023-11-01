@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class MenuBarItem extends StatelessWidget {
-  final Function? onTapFunction;
+  final Function() onTapFunction;
   final Color borderColor;
   final String title;
 
@@ -18,7 +18,7 @@ class MenuBarItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: onTapFunction!(),
+        onTap: onTapFunction,
         child: Center(
           child: Container(
             decoration: BoxDecoration(

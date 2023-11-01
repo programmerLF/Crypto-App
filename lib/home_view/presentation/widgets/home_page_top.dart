@@ -1,12 +1,26 @@
+import 'package:crypto_app/home_view/data/models/menu_item_model.dart';
 import 'package:flutter/material.dart';
 
 import 'menu_bar_item.dart';
 
+class HomePageTop extends StatefulWidget {
+  final Function onTapClicked;
 
-class HomePageTop extends StatelessWidget {
-  const HomePageTop({
-    super.key,
-  });
+  const HomePageTop({super.key, required this.onTapClicked});
+
+  @override
+  State<HomePageTop> createState() => _HomePageTopState();
+}
+
+class _HomePageTopState extends State<HomePageTop> {
+  int selectedIndex = 0;
+  List <MenuItemModel> items = MenuItemModel.menuItemsList;
+
+  void changeSelected(int index) {
+    widget.onTapClicked(index);
+    selectedIndex = index;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +45,17 @@ class HomePageTop extends StatelessWidget {
                 ),
                 Container(
                   height: 60,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      MenuBarItem(
-                        title: "Coins List",
-                        borderColor: Colors.white60,
-                        onTapFunction: () {},
-                      ),
-                      MenuBarItem(
-                          title: "Trending",
-                          borderColor: Colors.white60,
-                          onTapFunction: () {}),
-                      MenuBarItem(
-                          title: "Top Gainers",
-                          borderColor: Colors.white60,
-                          onTapFunction: () {}),
-                      MenuBarItem(
-                          title: "Top Losers",
-                          borderColor: Colors.white60,
-                          onTapFunction: () {}),
-                      MenuBarItem(
-                          title: "Most Visited",
-                          borderColor: Colors.white60,
-                          onTapFunction: () {}),
-                      MenuBarItem(
-                          title: "Newly Listed",
-                          borderColor: Colors.white60,
-                          onTapFunction: () {}),
-                    ],
-                  ),
+                  child: ListView.builder(
+                      itemCount: items.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context , index) => MenuBarItem(
+                    title: items[index].title,
+                    borderColor:
+                    selectedIndex == index ? items[index].selectedBorderColor: items[index].borderColor,
+                    onTapFunction: () {
+                      changeSelected(index);
+                    },
+                  )),
                 ),
               ],
             ),

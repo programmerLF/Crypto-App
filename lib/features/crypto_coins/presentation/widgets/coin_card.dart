@@ -84,9 +84,6 @@ class CoinCard extends StatelessWidget {
                               "${NumberFormat.decimalPattern()
                                   .format(MaxSupplyChecker.numOrNull(maxSupply: coin.maxSupply))} ${coin.symbol}"),
                             )
-                                // Text(((MaxSupplyChecker.numOrNull(
-                                //         maxSupply: coin.maxSupply)))
-                                //     .toStringAsFixed(2)),
                                 ),
 
                           const SizedBox(

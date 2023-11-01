@@ -5,12 +5,10 @@ import 'package:crypto_app/core/customized_text_style.dart';
 import 'package:crypto_app/core/util/error_messages.dart';
 import 'package:crypto_app/features/coin_details/presentation/cubit/coin_details_cubit.dart';
 import 'package:crypto_app/features/coin_details/presentation/cubit/coin_details_state.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-import '../../../../core/util/max_supply_checker.dart';
 
 
 class CoinDetailsPage extends StatelessWidget {
