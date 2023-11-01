@@ -1,4 +1,5 @@
 import 'package:crypto_app/home_view/data/models/menu_item_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'menu_bar_item.dart';
@@ -14,7 +15,7 @@ class HomePageTop extends StatefulWidget {
 
 class _HomePageTopState extends State<HomePageTop> {
   int selectedIndex = 0;
-  List <MenuItemModel> items = MenuItemModel.menuItemsList;
+  List<MenuItemModel> items = MenuItemModel.menuItemsList;
 
   void changeSelected(int index) {
     widget.onTapClicked(index);
@@ -39,8 +40,8 @@ class _HomePageTopState extends State<HomePageTop> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Cryptocurrency Market",
+                Text(
+                  'app_title'.tr(context: context) ?? "",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
                 ),
                 Container(
@@ -48,14 +49,19 @@ class _HomePageTopState extends State<HomePageTop> {
                   child: ListView.builder(
                       itemCount: items.length,
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context , index) => MenuBarItem(
-                    title: items[index].title,
-                    borderColor:
-                    selectedIndex == index ? items[index].selectedBorderColor: items[index].borderColor,
-                    onTapFunction: () {
-                      changeSelected(index);
-                    },
-                  )),
+                      itemBuilder: (context, index) => MenuBarItem(
+                            title: items[index].title,
+                            borderColor: selectedIndex == index
+                                ? items[index].selectedBorderColor
+                                : items[index].borderColor,
+                            onTapFunction: () {
+                              changeSelected(index);
+                              context.locale.toString() == 'en'
+                                  ? context.setLocale(Locale('ar'))
+                                  : context.setLocale(Locale('en'));
+                              print(context.locale.toString());
+                            },
+                          )),
                 ),
               ],
             ),

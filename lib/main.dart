@@ -1,12 +1,24 @@
 import 'package:crypto_app/home_view/presentation/pages/home_page.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
 
 import 'config/init_getit.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   configureDependencies();
 
-  runApp(const MyApp());
+  runApp(EasyLocalization(
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ar"),
+      ],
+      path: 'assets/translations',
+      assetLoader: const JsonAssetLoader(),
+      fallbackLocale: const Locale('en'),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,6 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cryptocurrency App',
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: ThemeData(
         useMaterial3: true,
       ),
