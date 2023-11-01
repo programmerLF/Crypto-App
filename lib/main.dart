@@ -10,7 +10,9 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   configureDependencies();
 
+
   runApp(EasyLocalization(
+
       supportedLocales: const [
         Locale("en"),
         Locale("ar"),
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print(context.locale.toString());
     return MaterialApp(
       title: 'Cryptocurrency App',
       localizationsDelegates: context.localizationDelegates,

@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/customized_text_style.dart';
 import 'package:crypto_app/home_view/data/models/menu_item_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +36,28 @@ class _HomePageTopState extends State<HomePageTop> {
         height: MediaQuery.of(context).size.height / 4,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 70, 8, 8),
+          padding: const EdgeInsets.fromLTRB(8.0, 15, 8, 15),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: TextButton(
+                      onPressed: () {
+                        context.locale.toString() == 'en'
+                            ? context.setLocale(Locale('ar'))
+                            : context.setLocale(Locale('en'));
+                        print(context.locale.toString());
+                        setState(() {
+                        });
+                      },
+                      child: Text( 'language'.tr(context: context) ?? "",style: $bodyText,)
+                    ),
+                  ),
+                ),
                 Text(
                   'app_title'.tr(context: context) ?? "",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
@@ -56,10 +74,6 @@ class _HomePageTopState extends State<HomePageTop> {
                                 : items[index].borderColor,
                             onTapFunction: () {
                               changeSelected(index);
-                              context.locale.toString() == 'en'
-                                  ? context.setLocale(Locale('ar'))
-                                  : context.setLocale(Locale('en'));
-                              print(context.locale.toString());
                             },
                           )),
                 ),
