@@ -28,6 +28,9 @@ dependencies:
   community_charts_flutter: ^1.0.2
   intl: ^0.18.1
   easy_localization_loader: ^2.0.0
+  kib_design_system:
+    git:
+      url: https://gitlab.tools.kibkw.digital/mobile/common/kib_design_system.git
 
 
 
@@ -35,12 +38,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  injectable_generator: ^2.4.1
+  injectable_generator: ^1.5.2
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
   freezed: ^2.4.5
   retrofit_generator: ^8.0.2
-
+dependency_overrides:
+  intl: ^0.17.0
+  community_charts_flutter: ^1.0.2
+  injectable: ^1.5.3
+  http: ^0.13.1
 flutter:
   uses-material-design: true
   assets:

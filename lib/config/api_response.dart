@@ -14,4 +14,6 @@ sealed class ApiResponse<T> with _$ApiResponse<T> {
 }
 
 dynamic readData(Map map, String key) =>
+
+    // check if the returned key is data otherwise body
     map['data'] ?? map["body"];

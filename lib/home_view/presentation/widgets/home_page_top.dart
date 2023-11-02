@@ -2,6 +2,7 @@ import 'package:crypto_app/core/customized_text_style.dart';
 import 'package:crypto_app/home_view/data/models/menu_item_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/widgets/base/text.dart';
 
 import 'menu_bar_item.dart';
 
@@ -58,10 +59,11 @@ class _HomePageTopState extends State<HomePageTop> {
                     ),
                   ),
                 ),
-                Text(
-                  'app_title'.tr(context: context) ?? "",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-                ),
+                AppText.headline('app_title'.tr(context: context) ?? ""),
+                // Text(
+                //   'app_title'.tr(context: context) ?? "",
+                //   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                // ),
                 Container(
                   height: 60,
                   child: ListView.builder(
