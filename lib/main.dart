@@ -2,6 +2,7 @@ import 'package:crypto_app/home_view/presentation/pages/home_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/kib_design_system.dart';
 
 import 'config/init_getit.dart';
 
@@ -30,15 +31,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(context.locale.toString());
-    return MaterialApp(
-      title: 'Cryptocurrency App',
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData(
-        useMaterial3: true,
+    return AppResponsiveTheme(
+      child: MaterialApp(
+        title: 'Cryptocurrency App',
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        home: HomePage(),
       ),
-      home: HomePage(),
     );
   }
 }
