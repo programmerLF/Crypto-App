@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:crypto_app/core/error/failure.dart';
-import 'package:crypto_app/features/coin_details/coin_profile/data/models/coin_profile_model.dart';
-import 'package:crypto_app/features/coin_details/coin_profile/domain/usecases/get_coin_profile.dart';
-import 'package:crypto_app/features/coin_details/coin_quote/data/models/coin_quote_model.dart';
-import 'package:crypto_app/features/coin_details/coin_quote/domain/usecases/get_coin_quote.dart';
+import 'package:crypto_app/features/coin_details/data/models/coin_profile_model.dart';
+import 'package:crypto_app/features/coin_details/domain/use_cases/get_coin_profile.dart';
+import 'package:crypto_app/features/coin_details/data/models/coin_quote_model.dart';
+import 'package:crypto_app/features/coin_details/domain/use_cases/get_coin_quote.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 

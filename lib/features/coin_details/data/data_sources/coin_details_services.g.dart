@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'rest_client.dart';
+part of 'coin_details_services.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'rest_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _RestClient implements RestClient {
-  _RestClient(
+class _CoinDetailsServices implements CoinDetailsServices {
+  _CoinDetailsServices(
     this._dio, {
     this.baseUrl,
   });
@@ -44,6 +44,36 @@ class _RestClient implements RestClient {
     final value = ApiResponse<CoinProfileModel>.fromJson(
       _result.data!,
       (json) => CoinProfileModel.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<ApiResponse<CoinQuoteModel>> getCoinQuote(String key) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'key': key};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<CoinQuoteModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/v1/markets/crypto/quotes',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<CoinQuoteModel>.fromJson(
+      _result.data!,
+      (json) => CoinQuoteModel.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

@@ -2,8 +2,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../coin_profile/data/models/coin_profile_model.dart';
-import '../../coin_quote/data/models/coin_quote_model.dart';
+import '../../data/models/coin_profile_model.dart';
+import '../../data/models/coin_quote_model.dart';
 
 part 'coin_details_state.freezed.dart';
 
