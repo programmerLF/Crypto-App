@@ -5,6 +5,8 @@ import 'package:crypto_app/home_view/presentation/pages/top_losers.dart';
 import 'package:crypto_app/home_view/presentation/pages/trending_list.dart';
 import 'package:crypto_app/home_view/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/theme/theme.dart';
+import 'package:kib_design_system/widgets/base/container.dart';
 import 'dart:io';
 
 import '../../../features/crypto_coins/presentation/pages/coins_list_page.dart';
@@ -22,8 +24,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return Scaffold(
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: theme.colors.background,
         body: SafeArea(
           child: Center(
               child: Column(children: [
@@ -34,12 +37,7 @@ class _HomePageState extends State<HomePage> {
                     curve: Curves.linear);
               },
             ),
-            Container(
-              height: Platform.isIOS
-                  ? MediaQuery.of(context).size.height -
-                      (MediaQuery.of(context).size.height / 2.85)
-                  : MediaQuery.of(context).size.height -
-                      (MediaQuery.of(context).size.height / 3.5),
+            Expanded(
               child: PageView(
                   controller: controller,
                   physics: const NeverScrollableScrollPhysics(),

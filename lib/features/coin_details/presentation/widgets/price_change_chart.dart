@@ -1,5 +1,7 @@
 import 'package:crypto_app/features/coin_details/presentation/widgets/line_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/kib_design_system.dart';
+import 'package:kib_design_system/widgets/base/container.dart';
 
 
 class PriceChangeChart extends StatelessWidget {
@@ -24,23 +26,21 @@ class PriceChangeChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Container(
-          width: MediaQuery.of(context).size.width * 2,
-          height: 250,
-          child: LineChart.priceChangeByDayData(
-            hour: hour,
-            day: day,
-            sevenDays: sevenDays,
-            thirtyDays: thirtyDays,
-            sixtyDays: sixtyDays,
-            ninetyDays: ninetyDays,
-            year: year,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: AppContainer(
+        padding: AppEdgeInsets.s(),
+        width: MediaQuery.of(context).size.width * 2,
+        height: 250,
+        child: LineChart.priceChangeByDayData(
+          hour: hour,
+          day: day,
+          sevenDays: sevenDays,
+          thirtyDays: thirtyDays,
+          sixtyDays: sixtyDays,
+          ninetyDays: ninetyDays,
+          year: year,
 
-          ),
         ),
       ),
     );

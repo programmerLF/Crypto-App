@@ -1,15 +1,17 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/kib_design_system.dart';
+import 'package:kib_design_system/widgets/base/text.dart';
 
 import '../../../../common_widgets/image_loader.dart';
 import '../../../../core/customized_text_style.dart';
-
 
 class CoinDetailsTopPart extends StatelessWidget {
   final String coinName;
   final String coinSymbol;
   final String coinCategory;
   final String url;
-  final String price;
+  final num price;
 
   const CoinDetailsTopPart({
     super.key,
@@ -22,38 +24,36 @@ class CoinDetailsTopPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Column(
           children: [
-            ImageLoader(url: url),
-
+            LoadingImage(url: url),
           ],
         ),
         Column(
           children: [
-
             Row(
               children: [
-
-                Text(coinName, style: $coinNameBold),
+                AppText.headline(coinName, color: theme.colors.textBodyPrimary,),
                 const SizedBox(
                   width: 10,
                 ),
-                Text(
+                AppText.bodyBold(
                   coinSymbol,
-                  style: $bodyText,
+                    color: theme.colors.textBodySecondary,
                 ),
               ],
             ),
-            Text(
+            AppText.bodyBold(
               coinCategory,
-              style: $bodyText,
+                color: theme.colors.textBodySecondary
             ),
-            Text(
-              "$price\$",
-              style: $priceText,
+            AppText.amountLarge(
+              "${NumberFormat.decimalPattern().format(price)} \$",
+                color: theme.colors.textBodyPrimary
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/kib_design_system.dart';
 
 
 class LineSeparator extends StatelessWidget {
@@ -8,10 +9,11 @@ class LineSeparator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return Container(
-      color: Colors.grey.shade300,
+      color: theme.colors.separator,
       width: MediaQuery.of(context).size.width - 40,
-      height: 1,
+      height: 2,
     );
   }
 }

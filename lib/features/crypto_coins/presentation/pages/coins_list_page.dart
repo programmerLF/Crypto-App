@@ -3,9 +3,11 @@ import 'package:crypto_app/core/util/error_messages.dart';
 import 'package:crypto_app/features/crypto_coins/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kib_design_system/components/error_widgets/error_widgets.dart';
 import '../../../../config/init_getit.dart';
 import '../cubit/crypto_coins_cubit.dart';
 import '../cubit/crypto_coins_state.dart';
+import 'package:kib_design_system/kib_design_system.dart';
 
 class CoinsListPage extends StatelessWidget {
   const CoinsListPage({
@@ -14,28 +16,35 @@ class CoinsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return BlocProvider<CryptoCoinsCubit>(
       create: (_) => getIt<CryptoCoinsCubit>()..getCoinsList(),
-      child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            color: Colors.grey.shade200,
-            // height: MediaQuery.of(context).size.height / 4,
-            child: BlocConsumer<CryptoCoinsCubit, CryptoCoinsState>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                return state.maybeMap(
-                  loaded: (data) => LoadedCoinsList(
-                    itemCount: data.coinsList.length,
-                    coinsList: data.coinsList,
-                  ),
-                  error: (message) => ReturnedErrorMsg(msg: message.errorMsg),
-                  loading: (_) => const LoadingIndicator(),
-                  orElse: () => const ReturnedErrorMsg(msg: UNEXPECTED_ERROR_MSG,),
-                );
-              },
-            ),
-          )),
+      child: AppContainer(
+        decoration: BoxDecoration(
+          color: theme.colors.background
+        ),
+        padding: const AppEdgeInsets.xs(),
+        child: BlocConsumer<CryptoCoinsCubit, CryptoCoinsState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return state.maybeMap(
+              loaded: (data) => LoadedCoinsList(
+                itemCount: data.coinsList.length,
+                coinsList: data.coinsList,
+              ),
+              error: (error) => AppErrorWidget.loadingFailed(
+                  title: "Loading Failed",
+                  content: error.errorMsg,
+                  buttonText: "Try again",
+                  onTryAgain: (){
+                    context.read<CryptoCoinsCubit>().getCoinsList();
+                  }),
+              loading: (_) => const LoadingIndicator(),
+              orElse: () => const ReturnedErrorMsg(msg: UNEXPECTED_ERROR_MSG,),
+            );
+          },
+        ),
+      ),
     );
   }
 }
