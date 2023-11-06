@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         //   darkColorsPallet: AppColorsData.dark(
         //
         //   ),
-        colorMode: ThemeMode.dark,
+        colorMode: ThemeMode.light,
         child: MaterialApp(
           title: 'Cryptocurrency App',
           localizationsDelegates: context.localizationDelegates,

@@ -1,3 +1,4 @@
+import 'package:crypto_app/features/new_beneficiary/presenttion/pages/new_beneficiary.dart';
 import 'package:crypto_app/home_view/presentation/pages/most_visited.dart';
 import 'package:crypto_app/home_view/presentation/pages/newly_listed.dart';
 import 'package:crypto_app/home_view/presentation/pages/top_gainers_list.dart';
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   children: const [
                     CoinsListPage(),
-                    Trending(),
+                    NewBeneficiaryPage(),
                     TopGainers(),
                     TopLosers(),
                     MostVisited(),

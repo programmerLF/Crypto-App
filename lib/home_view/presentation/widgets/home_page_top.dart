@@ -38,7 +38,7 @@ class _HomePageTopState extends State<HomePageTop>
             )),
 
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 15, 8, 15),
+          padding: const EdgeInsets.fromLTRB(8.0, 2, 8, 15),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

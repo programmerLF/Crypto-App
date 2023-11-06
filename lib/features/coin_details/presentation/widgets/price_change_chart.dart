@@ -26,6 +26,7 @@ class PriceChangeChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: AppContainer(
@@ -40,6 +41,7 @@ class PriceChangeChart extends StatelessWidget {
           sixtyDays: sixtyDays,
           ninetyDays: ninetyDays,
           year: year,
+          chartColor: theme.colors.success,
 
         ),
       ),

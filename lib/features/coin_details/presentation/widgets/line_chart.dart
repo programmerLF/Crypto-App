@@ -1,6 +1,5 @@
 /// Example of a simple line chart.
 import 'dart:math';
-import 'package:community_charts_flutter/community_charts_flutter.dart';
 import 'package:community_charts_flutter/src/text_style.dart' as style;
 import 'package:community_charts_flutter/src/text_element.dart' as element;
 import 'package:community_charts_flutter/community_charts_flutter.dart'
@@ -8,6 +7,7 @@ import 'package:community_charts_flutter/community_charts_flutter.dart'
 
 import 'package:crypto_app/core/util/price_change.dart';
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/theme/theme.dart';
 
 typedef GetText = String Function();
 
@@ -15,7 +15,8 @@ class LineChart extends StatefulWidget {
   final List<charts.Series<PriceChange, DateTime>> priceChangeList;
   final bool animate;
 
-  const LineChart(this.priceChangeList, {super.key, required this.animate});
+  const LineChart(this.priceChangeList,
+      {super.key, required this.animate});
 
   /// Creates a [LineChart] with sample data and no transition.
   factory LineChart.priceChangeByDayData({
@@ -26,6 +27,7 @@ class LineChart extends StatefulWidget {
     required num sixtyDays,
     required num ninetyDays,
     required num year,
+    required Color chartColor,
   }) {
     return LineChart(
       _priceChangeByDay(
@@ -35,7 +37,7 @@ class LineChart extends StatefulWidget {
           thirtyDays: thirtyDays,
           sixtyDays: sixtyDays,
           ninetyDays: ninetyDays,
-          year: year),
+          year: year, chartColor: chartColor),
       // Disable animations for image tests.
       animate: true,
     );
@@ -53,6 +55,7 @@ class LineChart extends StatefulWidget {
     required num sixtyDays,
     required num ninetyDays,
     required num year,
+    required Color chartColor,
   }) {
     DateTime currentDate = DateTime.now();
     final data = [
@@ -82,13 +85,14 @@ class LineChart extends StatefulWidget {
     return [
       charts.Series<PriceChange, DateTime>(
         id: 'Prices',
-        colorFn: (_, __) => charts.MaterialPalette.black,
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(chartColor),
         domainFn: (PriceChange price, _) => price.duration,
         measureFn: (PriceChange price, _) => price.rate,
         displayName: "Price Change Rate",
         data: data,
         labelAccessorFn: (PriceChange price, _) =>
-            '${price.rate}', // Display data values as labels
+            '${price.rate}',
+        // Display data values as labels
       )
     ];
   }
@@ -99,9 +103,11 @@ class _LineChartState extends State<LineChart> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return charts.TimeSeriesChart(
       widget.priceChangeList, animate: widget.animate,
       defaultRenderer: charts.LineRendererConfig(includePoints: true),
+
       // Include points for each data value
       behaviors: [
         charts.LinePointHighlighter(
@@ -109,10 +115,12 @@ class _LineChartState extends State<LineChart> {
           symbolRenderer: TextSymbolRenderer(() => value),
           ////////////////////// notice ////////////////////////////
         ),
-        charts.SeriesLegend(),
+        charts.SeriesLegend(
+            entryTextStyle: charts.TextStyleSpec(color: charts.ColorUtil.fromDartColor(theme.colors.textBodyPrimary))
+        ),
       ],
       selectionModels: [
-        SelectionModelConfig(changedListener: (SelectionModel model) {
+        charts.SelectionModelConfig(changedListener: (charts.SelectionModel model) {
           if (model.hasDatumSelection) {
             value =
                 "${model.selectedSeries[0].measureFn(model.selectedDatum[0].index)!.toStringAsFixed(2)}%";
@@ -120,11 +128,22 @@ class _LineChartState extends State<LineChart> {
           }
         })
       ],
+      primaryMeasureAxis: charts.NumericAxisSpec(
+    renderSpec: charts.SmallTickRendererSpec(labelStyle: charts.TextStyleSpec(color:charts.ColorUtil.fromDartColor(theme.colors.textBodyPrimary)),)
+    ),
+      secondaryMeasureAxis: charts.NumericAxisSpec(
+          renderSpec: charts.SmallTickRendererSpec(labelStyle: charts.TextStyleSpec(color:charts.ColorUtil.fromDartColor(theme.colors.textBodyPrimary )))
+      ),
+      domainAxis: charts.DateTimeAxisSpec(
+        renderSpec: charts.SmallTickRendererSpec(
+            labelStyle: charts.TextStyleSpec(color:charts.ColorUtil.fromDartColor(theme.colors.textBodyPrimary )))
+      ),
+
     );
   }
 }
 
-class TextSymbolRenderer extends CircleSymbolRenderer {
+class TextSymbolRenderer extends charts.CircleSymbolRenderer {
   TextSymbolRenderer(this.getText,
       {this.marginBottom = 8, this.padding = const EdgeInsets.all(8)});
 
@@ -133,11 +152,11 @@ class TextSymbolRenderer extends CircleSymbolRenderer {
   final EdgeInsets padding;
 
   @override
-  void paint(ChartCanvas canvas, Rectangle<num> bounds,
+  void paint(charts.ChartCanvas canvas, Rectangle<num> bounds,
       {List<int>? dashPattern,
-      Color? fillColor,
-      FillPatternType? fillPattern,
-      Color? strokeColor,
+      charts.Color? fillColor,
+      charts.FillPatternType? fillPattern,
+      charts.Color? strokeColor,
       double? strokeWidthPx}) {
     super.paint(canvas, bounds,
         dashPattern: dashPattern,
@@ -147,7 +166,7 @@ class TextSymbolRenderer extends CircleSymbolRenderer {
         strokeWidthPx: strokeWidthPx);
 
     style.TextStyle textStyle = style.TextStyle();
-    textStyle.color = Color.black;
+    textStyle.color = charts.Color.black;
     textStyle.fontSize = 15;
 
     charts.TextElement textElement =
@@ -168,7 +187,7 @@ class TextSymbolRenderer extends CircleSymbolRenderer {
         width + (padding.left + padding.right),
         height + (padding.top + padding.bottom),
       ),
-      fill: Color.white,
+      fill: charts.Color.white,
       radius: 16,
       roundTopLeft: true,
       roundTopRight: true,
