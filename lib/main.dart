@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         lightColorsPallet: AppColorsData.light().copyWith(
             actionablePrimary: Colors.blueGrey,
             actionableSecondary: Colors.grey.shade800,
+
             ),
         //   darkColorsPallet: AppColorsData.dark(
         //

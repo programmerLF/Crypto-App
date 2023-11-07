@@ -36,7 +36,7 @@ import '../features/crypto_coins/domain/usecases/get_crypto_coins_list.dart'
     as _i12;
 import '../features/crypto_coins/presentation/cubit/crypto_coins_cubit.dart'
     as _i16;
-import '../features/new_beneficiary/presenttion/pages/cubit/new_beneficiary_cubit.dart'
+import '../features/new_beneficiary/presenttion/cubit/new_beneficiary_cubit.dart'
     as _i6;
 import 'di_module.dart' as _i20; // ignore_for_file: unnecessary_lambdas
 

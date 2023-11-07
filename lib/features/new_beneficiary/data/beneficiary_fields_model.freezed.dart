@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BeneficiaryFieldsModel {
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get nickname => throw _privateConstructorUsedError;
-  String get bankName => throw _privateConstructorUsedError;
-  String get ibanNumber => throw _privateConstructorUsedError;
+  BankItemsModel? get bankName => throw _privateConstructorUsedError;
+  String? get ibanNumber => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BeneficiaryFieldsModelCopyWith<BeneficiaryFieldsModel> get copyWith =>
@@ -33,7 +33,10 @@ abstract class $BeneficiaryFieldsModelCopyWith<$Res> {
       _$BeneficiaryFieldsModelCopyWithImpl<$Res, BeneficiaryFieldsModel>;
   @useResult
   $Res call(
-      {String name, String? nickname, String bankName, String ibanNumber});
+      {String? name,
+      String? nickname,
+      BankItemsModel? bankName,
+      String? ibanNumber});
 }
 
 /// @nodoc
@@ -50,28 +53,28 @@ class _$BeneficiaryFieldsModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? name = freezed,
     Object? nickname = freezed,
-    Object? bankName = null,
-    Object? ibanNumber = null,
+    Object? bankName = freezed,
+    Object? ibanNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nickname: freezed == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String?,
-      bankName: null == bankName
+      bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ibanNumber: null == ibanNumber
+              as BankItemsModel?,
+      ibanNumber: freezed == ibanNumber
           ? _value.ibanNumber
           : ibanNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +89,10 @@ abstract class _$$BeneficiaryFieldsModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name, String? nickname, String bankName, String ibanNumber});
+      {String? name,
+      String? nickname,
+      BankItemsModel? bankName,
+      String? ibanNumber});
 }
 
 /// @nodoc
@@ -102,49 +108,47 @@ class __$$BeneficiaryFieldsModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? name = freezed,
     Object? nickname = freezed,
-    Object? bankName = null,
-    Object? ibanNumber = null,
+    Object? bankName = freezed,
+    Object? ibanNumber = freezed,
   }) {
     return _then(_$BeneficiaryFieldsModelImpl(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nickname: freezed == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String?,
-      bankName: null == bankName
+      bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ibanNumber: null == ibanNumber
+              as BankItemsModel?,
+      ibanNumber: freezed == ibanNumber
           ? _value.ibanNumber
           : ibanNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$BeneficiaryFieldsModelImpl implements _BeneficiaryFieldsModel {
+class _$BeneficiaryFieldsModelImpl extends _BeneficiaryFieldsModel {
   _$BeneficiaryFieldsModelImpl(
-      {required this.name,
-      required this.nickname,
-      required this.bankName,
-      required this.ibanNumber});
+      {this.name, this.nickname, this.bankName, this.ibanNumber})
+      : super._();
 
   @override
-  final String name;
+  final String? name;
   @override
   final String? nickname;
   @override
-  final String bankName;
+  final BankItemsModel? bankName;
   @override
-  final String ibanNumber;
+  final String? ibanNumber;
 
   @override
   String toString() {
@@ -177,21 +181,22 @@ class _$BeneficiaryFieldsModelImpl implements _BeneficiaryFieldsModel {
           _$BeneficiaryFieldsModelImpl>(this, _$identity);
 }
 
-abstract class _BeneficiaryFieldsModel implements BeneficiaryFieldsModel {
+abstract class _BeneficiaryFieldsModel extends BeneficiaryFieldsModel {
   factory _BeneficiaryFieldsModel(
-      {required final String name,
-      required final String? nickname,
-      required final String bankName,
-      required final String ibanNumber}) = _$BeneficiaryFieldsModelImpl;
+      {final String? name,
+      final String? nickname,
+      final BankItemsModel? bankName,
+      final String? ibanNumber}) = _$BeneficiaryFieldsModelImpl;
+  _BeneficiaryFieldsModel._() : super._();
 
   @override
-  String get name;
+  String? get name;
   @override
   String? get nickname;
   @override
-  String get bankName;
+  BankItemsModel? get bankName;
   @override
-  String get ibanNumber;
+  String? get ibanNumber;
   @override
   @JsonKey(ignore: true)
   _$$BeneficiaryFieldsModelImplCopyWith<_$BeneficiaryFieldsModelImpl>
