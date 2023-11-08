@@ -19,7 +19,7 @@ class BeneficiarySuccessScreen extends StatelessWidget {
 
           bottomWidget: CustomButton(onTap: (){},title: 'Done', darkButton: false,),
           child: AppContainer(
-              padding: AppEdgeInsets.m(),
+              padding: const AppEdgeInsets.m(),
               child: BeneficiaryDetailsBox(beneficiaryFieldsModel: beneficiaryFieldsModel, theme: theme,)),
 
         ),

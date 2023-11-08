@@ -21,12 +21,12 @@ class ReviewBeneficiaryDetailsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: AppContainer(
-        padding: AppEdgeInsets.m(),
+        padding: const AppEdgeInsets.m(),
         decoration: BoxDecoration(
             color: theme.colors.background,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
+            borderRadius: BorderRadius.only(
+              topLeft: theme.radius.large20,
+              topRight: theme.radius.large20,
             )),
         child: Column(
           children: [
@@ -34,15 +34,18 @@ class ReviewBeneficiaryDetailsBody extends StatelessWidget {
                 theme: theme, beneficiaryFieldsModel: beneficiaryFieldsModel),
             const Spacer(),
             CustomButton(
-                onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BeneficiarySuccessScreen(
-                      beneficiaryFieldsModel: beneficiaryFieldsModel,
-                    ),
-                  ));
-            }, title: 'Continue', darkButton: true,),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BeneficiarySuccessScreen(
+                        beneficiaryFieldsModel: beneficiaryFieldsModel,
+                      ),
+                    ));
+              },
+              title: 'Continue',
+              darkButton: true,
+            ),
           ],
         ),
       ),
