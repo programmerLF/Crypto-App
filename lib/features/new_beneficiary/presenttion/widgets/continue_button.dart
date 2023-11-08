@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kib_design_system/kib_design_system.dart';
 
 
-class ContinueButton extends StatelessWidget {
+class ContinueButtonValidator extends StatelessWidget {
 
-  const ContinueButton({
+  const ContinueButtonValidator({
     super.key
   });
 
@@ -34,5 +34,36 @@ class ContinueButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
       ),
     );
+  }
+}
+
+
+class CustomButton extends StatelessWidget {
+  final Function() onTap;
+  final String title;
+  final bool darkButton;
+
+  const CustomButton({
+    super.key, required this.onTap, required this.title, required this.darkButton,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: darkButton == true? AppButton.primary(
+        onTap: (){
+          onTap();
+        },
+        title: title,
+        state:  AppButtonState.enabled,
+        mainAxisSize: MainAxisSize.max,
+      ): AppButton.contrast(
+    onTap: (){
+    onTap();
+    },
+    title: title,
+    state:  AppButtonState.enabled,
+    mainAxisSize: MainAxisSize.max,
+    ));
   }
 }

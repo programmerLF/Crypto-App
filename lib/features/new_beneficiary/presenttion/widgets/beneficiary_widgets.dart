@@ -4,3 +4,6 @@ export 'iban_number_text_filed.dart';
 export 'bank_names_dropdown.dart';
 export 'nickname_text_field.dart';
 export 'initials_avatar.dart';
+export 'beneficiary_details_box.dart';
+export 'review_beneficiary_details_body.dart';
+export 'review_beneficiary_details_top.dart';

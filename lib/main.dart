@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppResponsiveTheme(
         lightColorsPallet: AppColorsData.light().copyWith(
-            actionablePrimary: Colors.blueGrey,
-            actionableSecondary: Colors.grey.shade800,
+            // actionablePrimary: Colors.blueGrey,
+            // actionableSecondary: Colors.grey.shade800,
 
             ),
         //   darkColorsPallet: AppColorsData.dark(

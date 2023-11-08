@@ -60,8 +60,9 @@ class _NewBeneficiaryPageState extends State<NewBeneficiaryPage> {
                 },),
                 // const AppGap.x27l(),
                 const Spacer(),
-                const ContinueButton(
+                const ContinueButtonValidator(
                 )
+
               ],
             ),
           );

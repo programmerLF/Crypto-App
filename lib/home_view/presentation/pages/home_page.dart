@@ -28,30 +28,35 @@ class _HomePageState extends State<HomePage> {
     final theme = AppTheme.of(context);
     return Scaffold(
         backgroundColor: theme.colors.background,
-        body: SafeArea(
-          child: Center(
-              child: Column(children: [
-            HomePageTop(
-              onTapClicked: (page) {
-                controller.animateToPage(page,
-                    duration: const Duration(microseconds: 200),
-                    curve: Curves.linear);
-              },
-            ),
-            Expanded(
-              child: PageView(
-                  controller: controller,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const [
-                    CoinsListPage(),
-                    NewBeneficiaryPage(),
-                    TopGainers(),
-                    TopLosers(),
-                    MostVisited(),
-                    NewlyListed(),
-                  ]),
-            ),
-          ])),
+        body: AppContainer(
+           decoration: BoxDecoration(
+             // color: theme.colors.surface,
+           ),
+          child: SafeArea(
+            child: Center(
+                child: Column(children: [
+              HomePageTop(
+                onTapClicked: (page) {
+                  controller.animateToPage(page,
+                      duration: const Duration(microseconds: 200),
+                      curve: Curves.linear);
+                },
+              ),
+              Expanded(
+                child: PageView(
+                    controller: controller,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: const [
+                      CoinsListPage(),
+                      NewBeneficiaryPage(),
+                      TopGainers(),
+                      TopLosers(),
+                      MostVisited(),
+                      NewlyListed(),
+                    ]),
+              ),
+            ])),
+          ),
         ));
   }
 }
