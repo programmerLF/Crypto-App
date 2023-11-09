@@ -33,36 +33,45 @@ class _NewBeneficiaryPageState extends State<NewBeneficiaryPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InitialsAvatar(theme: theme),
-                const AppGap.m(),
-                NameTextField(
-                  onChanged: (name) {
-                    print(name);
-                    context.read<NewBeneficiaryCubit>().nameChanged(name);
-                  },
+                Expanded(
+                  child: ListView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: [
+                      Center(child: InitialsAvatar(theme: theme)),
+                      const AppGap.m(),
+                      NameTextField(
+                        onChanged: (name) {
+                          print(name);
+                          context.read<NewBeneficiaryCubit>().nameChanged(name);
+                        },
+                      ),
+                      const AppGap.m(),
+                      NicknameTextField(
+                        onChanged: (nickname) {
+                          context
+                              .read<NewBeneficiaryCubit>()
+                              .nicknameChanged(nickname);
+                        },
+                      ),
+                      const AppGap.m(),
+                      BankNamesDropDown(
+                        onChanged: (bank) {
+                          context.read<NewBeneficiaryCubit>().bankChanged(bank);
+                        },
+                        onSearch: () {},
+                      ),
+                      const AppGap.m(),
+                      IbanNumberTextField(
+                        onChanged: (iban) {
+                          context.read<NewBeneficiaryCubit>().ibanNumber(iban);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                const AppGap.m(),
-                NicknameTextField(
-                  onChanged: (nickname) {
-                    context.read<NewBeneficiaryCubit>().nicknameChanged(nickname);
-                  },
-                ),
-                const AppGap.m(),
-                BankNamesDropDown(
-                  onChanged: (bank) {
-                    context.read<NewBeneficiaryCubit>().bankChanged(bank);
-                  },
-                  onSearch: () {},
-                ),
-                const AppGap.m(),
-                IbanNumberTextField(onChanged: (iban) {
-                  context.read<NewBeneficiaryCubit>().ibanNumber(iban);
-                },),
-                // const AppGap.x27l(),
-                const Spacer(),
-                const ContinueButtonValidator(
-                )
 
+                const ContinueButtonValidator()
               ],
             ),
           );

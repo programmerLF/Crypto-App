@@ -2,14 +2,12 @@ import 'package:crypto_app/features/consent/presentation/pages/active_sessions_p
 import 'package:crypto_app/features/new_beneficiary/presenttion/pages/new_beneficiary.dart';
 import 'package:crypto_app/home_view/presentation/pages/most_visited.dart';
 import 'package:crypto_app/home_view/presentation/pages/newly_listed.dart';
-import 'package:crypto_app/home_view/presentation/pages/top_gainers_list.dart';
+
 import 'package:crypto_app/home_view/presentation/pages/top_losers.dart';
-import 'package:crypto_app/home_view/presentation/pages/trending_list.dart';
 import 'package:crypto_app/home_view/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:kib_design_system/theme/theme.dart';
 import 'package:kib_design_system/widgets/base/container.dart';
-import 'dart:io';
 
 import '../../../features/crypto_coins/presentation/pages/coins_list_page.dart';
 
@@ -30,9 +28,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: theme.colors.background,
         body: AppContainer(
-           decoration: BoxDecoration(
-             // color: theme.colors.surface,
-           ),
+          decoration: BoxDecoration(
+              // color: theme.colors.surface,
+              ),
           child: SafeArea(
             child: Center(
                 child: Column(children: [

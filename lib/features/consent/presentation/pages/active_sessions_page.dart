@@ -1,9 +1,8 @@
-import 'package:crypto_app/core/util/alert_msgs.dart';
-import 'package:dartz/dartz.dart';
+import 'package:crypto_app/core/alert_msgs.dart';
 import 'package:flutter/material.dart';
 import 'package:kib_design_system/kib_design_system.dart';
-import 'package:kib_design_system/theme/data/data.dart';
 
+import '../../data/models/consent_active_sessions_model.dart';
 import '../widgets/consent_widgets.dart';
 
 class ActiveSessions extends StatelessWidget {
@@ -11,11 +10,6 @@ class ActiveSessions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> permissions = [
-      "Account balance",
-      "Account details",
-      "Transaction details"
-    ];
     final theme = AppTheme.of(context);
     return AppContainer(
       padding: const AppEdgeInsets.m(),
@@ -24,34 +18,33 @@ class ActiveSessions extends StatelessWidget {
       ),
       child: Column(
         children: [
-          AppAlert.information(
-            title: "Disclaimer",
-            content: CONSENT_ACTIVE_SESSIONS_ALERT,
-            sticky: true,
-            onCloseSticky: () {},
-          ),
-          const AppGap.m(),
-          AppContainer(
-            padding: const AppEdgeInsets.m(),
-            decoration: BoxDecoration(
-              color: theme.colors.surface,
-              borderRadius: BorderRadius.all(theme.radius.regular),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
               children: [
-                ConsentExternalProvider(theme: theme, icon: Assets.icons.bank, providerName: "BBK bank",date: "10 July 2023",),
+                const ConsentAlert(
+                  title: "Disclaimer",
+                  content: CONSENT_ACTIVE_SESSIONS_ALERT,
+                ),
                 const AppGap.m(),
-                ConsentPermissionsBox(theme: theme, permissions: permissions),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: ConsentActiveSessionModel.activeSessionsList
+                        .length,
+                    itemBuilder: (context, index) {
+                      return ConsentSessionsBox(
+                        consentActiveSessionModel: ConsentActiveSessionModel
+                            .activeSessionsList[index],);
+                    }),
+                const OtpExpirationMsg(),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-
-
 
 
