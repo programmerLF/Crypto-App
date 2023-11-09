@@ -3,10 +3,10 @@ import 'package:kib_design_system/kib_design_system.dart';
 import 'package:kib_design_system/theme/data/data.dart';
 
 
-class ConsentPermissionsBox extends StatelessWidget {
+class ConsentPermissionsWidget extends StatelessWidget {
 
   final List<String> permissions;
-  const ConsentPermissionsBox({
+  const ConsentPermissionsWidget({
     super.key,
     required this.permissions,
   });

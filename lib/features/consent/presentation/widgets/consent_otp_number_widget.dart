@@ -2,9 +2,9 @@ import 'package:kib_design_system/kib_design_system.dart';
 
 
 
-class ConsentOtpNumber extends StatelessWidget {
+class ConsentOtpNumberWidget extends StatelessWidget {
   final String otp;
-  const ConsentOtpNumber({
+  const ConsentOtpNumberWidget({
     super.key,
     required this.otp,
   });

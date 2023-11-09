@@ -1,13 +1,13 @@
 import 'package:kib_design_system/kib_design_system.dart';
 import 'package:kib_design_system/theme/data/data.dart';
 
-class ConsentExternalProvider extends StatelessWidget {
+class ConsentExternalProviderWidget extends StatelessWidget {
 
   final SvgGenImage icon;
   final String providerName;
   final String date;
 
-  const ConsentExternalProvider({
+  const ConsentExternalProviderWidget({
     super.key,
     required this.icon,
     required this.providerName,

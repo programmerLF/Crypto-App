@@ -1,12 +1,12 @@
 import 'package:kib_design_system/kib_design_system.dart';
 import 'package:kib_design_system/widgets/buttons/secondary_button_layout.dart';
 
-import 'consent_otp_number.dart';
+import 'consent_otp_number_widget.dart';
 
-class ConsentOtpBox extends StatelessWidget {
+class ConsentOtpWidget extends StatelessWidget {
 
   final String otp;
-  const ConsentOtpBox({
+  const ConsentOtpWidget({
     super.key, required this.otp,
   });
 
@@ -21,7 +21,7 @@ class ConsentOtpBox extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ConsentOtpNumber(otp: otp,),
+          ConsentOtpNumberWidget(otp: otp,),
           AppSecondaryButtonLayout(
             padding: const AppEdgeInsets.symmetric(horizontal: AppGapSize.xl, vertical: AppGapSize.xxs),
             textColor: AppColorsData.azureLight[500],

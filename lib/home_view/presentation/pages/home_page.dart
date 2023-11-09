@@ -1,4 +1,5 @@
 import 'package:crypto_app/features/consent/presentation/pages/active_sessions_page.dart';
+import 'package:crypto_app/features/consent/presentation/pages/history_sessions_page.dart';
 import 'package:crypto_app/features/new_beneficiary/presenttion/pages/new_beneficiary.dart';
 import 'package:crypto_app/home_view/presentation/pages/most_visited.dart';
 import 'package:crypto_app/home_view/presentation/pages/newly_listed.dart';
@@ -48,8 +49,8 @@ class _HomePageState extends State<HomePage> {
                     children: const [
                       CoinsListPage(),
                       NewBeneficiaryPage(),
-                      ActiveSessions(),
-                      TopLosers(),
+                      ActiveSessionsPage(),
+                      HistorySessionsPage(),
                       MostVisited(),
                       NewlyListed(),
                     ]),

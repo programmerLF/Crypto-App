@@ -2,10 +2,10 @@ import 'package:kib_design_system/kib_design_system.dart';
 
 
 
-class ConsentAlert extends StatelessWidget {
+class ConsentAlertWidget extends StatelessWidget {
   final String title;
   final String content;
-  const ConsentAlert({
+  const ConsentAlertWidget({
     super.key, required this.title, required this.content,
   });
 

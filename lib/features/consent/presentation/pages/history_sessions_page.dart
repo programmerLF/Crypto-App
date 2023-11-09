@@ -5,8 +5,8 @@ import 'package:kib_design_system/kib_design_system.dart';
 import '../../data/models/consent_active_sessions_model.dart';
 import '../widgets/consent_widgets.dart';
 
-class ActiveSessionsPage extends StatelessWidget {
-  const ActiveSessionsPage({super.key});
+class HistorySessionsPage extends StatelessWidget {
+  const HistorySessionsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +22,16 @@ class ActiveSessionsPage extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: [
-                const ConsentAlertWidget(
-                  title: "Disclaimer",
-                  content: CONSENT_ACTIVE_SESSIONS_ALERT,
-                ),
-                const AppGap.m(),
                 ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: SessionsModel.activeSessionsList
                         .length,
                     itemBuilder: (context, index) {
                       return SessionsWidget(
-                        sessionModel: SessionsModel.activeSessionsList[index],
-                        bottomWidget: SessionsBottomWidget(consentActiveSessionModel: SessionsModel.activeSessionsList[index]),
-                      );
+                        sessionModel: SessionsModel
+                            .activeSessionsList[index],);
                     }),
-                const OtpExpirationMsgWidget(),
               ],
             ),
           ),

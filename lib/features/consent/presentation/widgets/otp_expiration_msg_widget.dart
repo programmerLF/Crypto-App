@@ -1,7 +1,7 @@
 import 'package:kib_design_system/kib_design_system.dart';
 
-class OtpExpirationMsg extends StatelessWidget {
-  const OtpExpirationMsg({
+class OtpExpirationMsgWidget extends StatelessWidget {
+  const OtpExpirationMsgWidget({
     super.key,
   });
 

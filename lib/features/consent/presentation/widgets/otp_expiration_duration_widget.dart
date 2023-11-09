@@ -1,9 +1,9 @@
 import 'package:kib_design_system/kib_design_system.dart';
 
 
-class OtpExpirationDuration extends StatelessWidget {
+class OtpExpirationDurationWidget extends StatelessWidget {
   final String otpTime;
-  const OtpExpirationDuration({
+  const OtpExpirationDurationWidget({
     super.key, required this.otpTime,
   });
 
