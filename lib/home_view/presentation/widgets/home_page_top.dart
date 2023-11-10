@@ -1,10 +1,10 @@
-import 'package:crypto_app/core/customized_text_style.dart';
+
 import 'package:crypto_app/home_view/data/models/menu_item_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kib_design_system/widgets/base/text.dart';
+import 'package:kib_design_system/kib_design_system.dart';
 
-import 'menu_bar_item.dart';
+
 
 class HomePageTop extends StatefulWidget {
   final Function onTapClicked;
@@ -15,29 +15,30 @@ class HomePageTop extends StatefulWidget {
   State<HomePageTop> createState() => _HomePageTopState();
 }
 
-class _HomePageTopState extends State<HomePageTop> {
+class _HomePageTopState extends State<HomePageTop>
+    with TickerProviderStateMixin {
+
   int selectedIndex = 0;
   List<MenuItemModel> items = MenuItemModel.menuItemsList;
 
   void changeSelected(int index) {
     widget.onTapClicked(index);
     selectedIndex = index;
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: const BoxDecoration(
-            color: Colors.white60,
-            borderRadius: BorderRadius.only(
+    final theme = AppTheme.of(context);
+    return AppContainer(
+        decoration:  BoxDecoration(
+            color: theme.colors.surface,
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20.0),
               bottomRight: Radius.circular(20.0),
             )),
-        height: MediaQuery.of(context).size.height / 4,
-        width: MediaQuery.of(context).size.width,
+
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 15, 8, 15),
+          padding: const EdgeInsets.fromLTRB(8.0, 2, 8, 15),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,37 +49,53 @@ class _HomePageTopState extends State<HomePageTop> {
                     alignment: Alignment.topRight,
                     child: TextButton(
                       onPressed: () {
-                        context.locale.toString() == 'en'
-                            ? context.setLocale(Locale('ar'))
-                            : context.setLocale(Locale('en'));
-                        print(context.locale.toString());
-                        setState(() {
-                        });
-                      },
-                      child: Text( 'language'.tr(context: context) ?? "",style: $bodyText,)
-                    ),
+                          context.locale.toString() == 'en'
+                              ? context.setLocale(const Locale('ar'))
+                              : context.setLocale(const Locale('en'));
+                          // print(context.locale.toString());
+                          setState(() {});
+                        },
+                        child: AppText.bodyBold(
+                          'language'.tr(context: context) ?? "",
+                          color: theme.colors.textBodySecondary,
+                        )),
                   ),
                 ),
-                AppText.headline('app_title'.tr(context: context) ?? ""),
-                // Text(
-                //   'app_title'.tr(context: context) ?? "",
-                //   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-                // ),
-                Container(
-                  height: 60,
-                  child: ListView.builder(
-                      itemCount: items.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => MenuBarItem(
-                            title: items[index].title,
-                            borderColor: selectedIndex == index
-                                ? items[index].selectedBorderColor
-                                : items[index].borderColor,
-                            onTapFunction: () {
-                              changeSelected(index);
-                            },
-                          )),
+                AppText.displayH2Heavy('app_title'.tr(context: context) ?? "", color: theme.colors.textBodyPrimary,),
+                const SizedBox(height: 30,),
+
+                AppPillList(
+                  selectedIndex: 0,
+                  onTabChanged: (index) {
+                    changeSelected(index);
+                  },
+                  pillsLabel: const [
+                    "Coins List",
+                    "Beneficiary",
+                    "Active sessions",
+                    "History",
+                    "Most Visited",
+                    "Newly Listed"
+                  ],
                 ),
+
+                // "Int)
+
+                // Container(
+                //   height: 60,
+                //   child: ListView.builder(
+                //       itemCount: items.length,
+                //       scrollDirection: Axis.horizontal,
+                //       itemBuilder: (context, index) => MenuBarItem(
+                //             title: items[index].title,
+                //             borderColor: selectedIndex == index
+                //                 ? items[index].selectedBorderColor
+                //                 : items[index].borderColor,
+                //             onTapFunction: () {
+                //               changeSelected(index);
+                //             },
+                //           )),
+                // ),
               ],
             ),
           ),

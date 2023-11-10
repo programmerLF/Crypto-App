@@ -1,6 +1,6 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:kib_design_system/kib_design_system.dart';
 
 import '../../../coin_details/presentation/pages/coin_details_page.dart';
 import '../../data/models/crypto_coins_model.dart';
@@ -18,36 +18,32 @@ class LoadedCoinsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Platform.isIOS
-          ? MediaQuery.of(context).size.height - 250
-          : MediaQuery.of(context).size.height - 230,
-      child: ListView.builder(
-        itemCount: itemCount,
-        itemBuilder: (context, index) {
-          CryptoCoinsModel coin = coinsList[index];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CoinDetailsPage(
-                              coinKey: coin.key,
-                              logoUrl: coin.logo,
-                            )));
-              },
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white60,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                child: CoinCard(coin: coin),
-              ),
+    final theme = AppTheme.of(context);
+    return ListView.builder(
+      itemCount: itemCount,
+      itemBuilder: (context, index) {
+        CryptoCoinsModel coin = coinsList[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CoinDetailsPage(
+                            coinKey: coin.key,
+                            logoUrl: coin.logo,
+                          )));
+            },
+            child: AppContainer(
+              decoration:  BoxDecoration(
+                  color: theme.colors.surface,
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0))),
+              child: CoinCard(coin: coin),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

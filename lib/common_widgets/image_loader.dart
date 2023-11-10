@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class ImageLoader extends StatelessWidget {
-  const ImageLoader({
+class LoadingImage extends StatelessWidget {
+  const LoadingImage({
     super.key,
     required this.url,
   });

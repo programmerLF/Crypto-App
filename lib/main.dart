@@ -11,9 +11,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   configureDependencies();
 
-
   runApp(EasyLocalization(
-
       supportedLocales: const [
         Locale("en"),
         Locale("ar"),
@@ -30,18 +28,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print(context.locale.toString());
     return AppResponsiveTheme(
-      child: MaterialApp(
-        title: 'Cryptocurrency App',
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        theme: ThemeData(
-          useMaterial3: true,
-        ),
-        home: HomePage(),
-      ),
-    );
+        lightColorsPallet: AppColorsData.light().copyWith(
+            // actionablePrimary: Colors.blueGrey,
+            // actionableSecondary: Colors.grey.shade800,
+
+            ),
+        //   darkColorsPallet: AppColorsData.dark(
+        //
+        //   ),
+        colorMode: ThemeMode.light,
+        child: MaterialApp(
+          title: 'Cryptocurrency App',
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
+          home: const HomePage(),
+        ));
   }
 }
