@@ -6,6 +6,9 @@ import 'package:kib_design_system/theme/data/data.dart';
 import '../../data/bank_items_model.dart';
 import '../cubit/new_beneficiary_cubit.dart';
 
+//perfect but you don't need to pass final Function(BankItemsModel bank) onChanged,onSearch  from outside
+// the purpose of having each widget in separate file to make it contains all the logic inside
+//the only case that makes you pass the functions or the data from outside if this widget used in multiple places and each place has different business logic
 class BankNamesDropDown extends StatelessWidget {
   final Function(BankItemsModel bank) onChanged;
   final Function() onSearch;

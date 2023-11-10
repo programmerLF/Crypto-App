@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 
 import 'new_beneficiary_state.dart';
 
+//Great Job Here everything perfect
 
 @injectable
 class NewBeneficiaryCubit extends Cubit<NewBeneficiaryState> {

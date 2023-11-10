@@ -1,6 +1,7 @@
 import 'package:kib_design_system/kib_design_system.dart';
 
 
+//great job, just small comment it's too dangerous to use Expanded here use it when you're calling the widget itself
 
 class ConsentOtpNumberWidget extends StatelessWidget {
   final String otp;
