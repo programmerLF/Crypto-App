@@ -1,7 +1,7 @@
 import 'package:kib_design_system/kib_design_system.dart';
 
 
-// if the title and content are constant text you don't need to pass from outside
+// if the title and content are constant text, you don't need to pass from outside
 //you can write it here directly to avoid writing too much code in the main page
 
 class ConsentAlertWidget extends StatelessWidget {
