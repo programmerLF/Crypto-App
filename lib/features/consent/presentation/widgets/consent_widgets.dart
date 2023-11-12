@@ -9,3 +9,4 @@ export 'sessions_widget.dart';
 export 'sessions_bottom_widget.dart';
 export 'copy_otp_widget.dart';
 export 'status_widget.dart';
+export 'consent_tabs_widget.dart';

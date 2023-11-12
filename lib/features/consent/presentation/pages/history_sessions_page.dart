@@ -11,7 +11,7 @@ class HistorySessionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return AppContainer(
-      padding: const AppEdgeInsets.m(),
+      // padding: const AppEdgeInsets.m(),
       decoration: BoxDecoration(
         color: theme.colors.background,
       ),
@@ -28,6 +28,7 @@ class HistorySessionsPage extends StatelessWidget {
                         .length,
                     itemBuilder: (context, index) {
                       return SessionsWidget(
+                        withBorder: true,
                         sessionModel: SessionsModel.activeSessionsList[index],
                         statusWidget:  StatusWidget(expired: SessionsModel.activeSessionsList[index].expired,),);
                     }),

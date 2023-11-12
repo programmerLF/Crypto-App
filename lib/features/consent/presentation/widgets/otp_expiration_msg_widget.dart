@@ -11,9 +11,9 @@ class OtpExpirationMsgWidget extends StatelessWidget {
     final theme = AppTheme.of(context);
     return Center(
       child: AppContainer(
-        padding: const AppEdgeInsets.m(),
+        padding: const AppEdgeInsets.symmetric(vertical: AppGapSize.none, horizontal: AppGapSize.m),
         //const AppEdgeInsets.only(left: AppGapSize.x7l, bottom: AppGapSize.xs, right: AppGapSize.x7l),
-        child: AppText.smallMedium(
+        child: AppText.smallRegular(
           "If your OTP expired you may request it \n again from external party application",
           color: theme.colors.textBodySecondary,
           textAlign: TextAlign.center,

@@ -12,7 +12,7 @@ class ConsentAlertWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppContainer(
-      margin: const AppEdgeInsets.only(bottom: AppGapSize.m),
+      margin: const AppEdgeInsets.only(bottom: AppGapSize.m,),
       child: AppAlert.information(
         padding: const AppEdgeInsets.s(),
         title: "Disclaimer",

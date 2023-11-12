@@ -1,4 +1,4 @@
-import 'package:crypto_app/core/alert_msgs.dart';
+
 import 'package:flutter/material.dart';
 import 'package:kib_design_system/kib_design_system.dart';
 
@@ -12,7 +12,7 @@ class ActiveSessionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return AppContainer(
-      padding: const AppEdgeInsets.m(),
+      // padding: const AppEdgeInsets.m(),
       decoration: BoxDecoration(
         color: theme.colors.background,
       ),

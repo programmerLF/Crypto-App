@@ -71,11 +71,9 @@ class _HomePageTopState extends State<HomePageTop>
                   },
                   pillsLabel: const [
                     "Coins List",
+                    "Consent",
                     "Beneficiary",
-                    "Active sessions",
-                    "History",
                     "Most Visited",
-                    "Newly Listed"
                   ],
                 ),
 

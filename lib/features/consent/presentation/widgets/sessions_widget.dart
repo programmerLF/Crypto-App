@@ -7,12 +7,14 @@ class SessionsWidget extends StatelessWidget {
   final Widget _bottomWidget;
   final Widget _statusWidget;
   final SessionsModel sessionModel;
+  final bool withBorder;
 
   SessionsWidget({
     super.key,
     required this.sessionModel,
     Widget? bottomWidget,
     Widget? statusWidget,
+    this.withBorder = false,
   }) : _bottomWidget = bottomWidget ?? Container(),
         _statusWidget = statusWidget ?? Container();
 
@@ -26,6 +28,10 @@ class SessionsWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.colors.surface,
         borderRadius: BorderRadius.all(theme.radius.regular),
+       border: Border.all(
+         color: theme.colors.separator, // Set the border color here
+         width: withBorder? 1.0: 0, // Set the border width if needed
+       ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
