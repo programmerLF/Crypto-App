@@ -8,9 +8,8 @@ import '../cubit/new_beneficiary_cubit.dart';
 
 class NameTextField extends StatelessWidget {
 
-  final Function(String name) onChanged;
   const NameTextField({
-    super.key, required this.onChanged,
+    super.key,
   });
 
   @override
@@ -23,7 +22,7 @@ class NameTextField extends StatelessWidget {
         tooltipTextColor:getColor(cubit ,theme),
         label: "Full Name",
         onChanged: (value) {
-          onChanged(value);
+          context.read<NewBeneficiaryCubit>().nameChanged(value);
         },
       ),
     );

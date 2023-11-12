@@ -7,12 +7,15 @@ class SessionsModel {
   final List<String> permissions;
   final String otp;
   final String otpTime;
+  final bool expired;
 
   SessionsModel(this.bankIcon, this.permissions,
       {required this.bankName,
       required this.sessionRequestDate,
       required this.otp,
-      required this.otpTime});
+      required this.otpTime,
+      this.expired = false
+      });
 
 
   static List<SessionsModel> activeSessionsList = [
@@ -27,6 +30,7 @@ class SessionsModel {
         bankName: "Yolt wallet",
         sessionRequestDate: "01 November 2023",
         otp: "26790",
-        otpTime: "5:00 minutes"),
+        otpTime: "5:00 minutes",
+        expired: true),
   ];
 }

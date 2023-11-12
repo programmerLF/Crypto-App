@@ -7,3 +7,5 @@ export 'consent_otp_number_widget.dart';
 export 'consent_otp_widget.dart';
 export 'sessions_widget.dart';
 export 'sessions_bottom_widget.dart';
+export 'copy_otp_widget.dart';
+export 'status_widget.dart';

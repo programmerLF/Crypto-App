@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kib_design_system/kib_design_system.dart';
@@ -17,11 +19,10 @@ class InitialsAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.watch<NewBeneficiaryCubit>();
-    String initials =" ";
-    initials = cubit.beneficiaryFieldsModel.name??" ";
+    final initials = cubit.beneficiaryFieldsModel.name ?? " ";
     return AvatarWidget.initialName(
 
-      initialName:  initials.length>=2? initials.substring(0,2) : " ",
+      initialName: initials.substring(0, min(2, initials.length)),
       size: AvatarSize.large,
       initialNameColor: theme.colors.textBodySecondary,
     );

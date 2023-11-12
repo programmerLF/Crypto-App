@@ -2,7 +2,7 @@ import 'package:crypto_app/core/alert_msgs.dart';
 import 'package:flutter/material.dart';
 import 'package:kib_design_system/kib_design_system.dart';
 
-import '../../data/models/consent_active_sessions_model.dart';
+import '../../data/models/sessions_model.dart';
 import '../widgets/consent_widgets.dart';
 
 class ActiveSessionsPage extends StatelessWidget {
@@ -22,20 +22,17 @@ class ActiveSessionsPage extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: [
-                const ConsentAlertWidget(
-                  title: "Disclaimer",
-                  content: CONSENT_ACTIVE_SESSIONS_ALERT,
-                ),
-                const AppGap.m(),
+                const ConsentAlertWidget(),
                 ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: SessionsModel.activeSessionsList
-                        .length,
+                    itemCount: SessionsModel.activeSessionsList.length,
                     itemBuilder: (context, index) {
                       return SessionsWidget(
                         sessionModel: SessionsModel.activeSessionsList[index],
-                        bottomWidget: SessionsBottomWidget(consentActiveSessionModel: SessionsModel.activeSessionsList[index]),
+                        bottomWidget: SessionsBottomWidget(
+                            consentActiveSessionModel:
+                                SessionsModel.activeSessionsList[index]),
                       );
                     }),
                 const OtpExpirationMsgWidget(),
@@ -47,5 +44,3 @@ class ActiveSessionsPage extends StatelessWidget {
     );
   }
 }
-
-

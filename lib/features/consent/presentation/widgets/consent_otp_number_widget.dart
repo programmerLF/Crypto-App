@@ -13,21 +13,19 @@ class ConsentOtpNumberWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    return Expanded(
-      child: AppContainer(
-        child: Row(
-          children: [
-            AppText.bodyRegular(
-              "OTP",
-              color: theme.colors.textBodySecondary,
-            ),
-            const AppGap.xs(),
-            AppText.bodyBold(
-              otp,
-              color: theme.colors.textBodySecondary,
-            ),
-          ],
-        ),
+    return AppContainer(
+      child: Row(
+        children: [
+          AppText.bodyRegular(
+            "OTP",
+            color: theme.colors.textBodySecondary,
+          ),
+          const AppGap.xs(),
+          AppText.bodyBold(
+            otp,
+            color: theme.colors.textBodySecondary,
+          ),
+        ],
       ),
     );
   }

@@ -1,17 +1,21 @@
 import 'package:kib_design_system/kib_design_system.dart';
 import 'consent_widgets.dart';
 
-import '../../data/models/consent_active_sessions_model.dart';
+import '../../data/models/sessions_model.dart';
 
 class SessionsWidget extends StatelessWidget {
   final Widget _bottomWidget;
+  final Widget _statusWidget;
   final SessionsModel sessionModel;
 
   SessionsWidget({
     super.key,
     required this.sessionModel,
     Widget? bottomWidget,
-  }) : _bottomWidget = bottomWidget ?? Container();
+    Widget? statusWidget,
+  }) : _bottomWidget = bottomWidget ?? Container(),
+        _statusWidget = statusWidget ?? Container();
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,7 @@ class SessionsWidget extends StatelessWidget {
             icon: sessionModel.bankIcon,
             providerName: sessionModel.bankName,
             date: sessionModel.sessionRequestDate,
+            statusWidget: _statusWidget,
           ),
           const AppGap.m(),
           ConsentPermissionsWidget(permissions: sessionModel.permissions),

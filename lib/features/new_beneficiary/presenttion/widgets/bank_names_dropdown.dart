@@ -7,13 +7,9 @@ import '../../data/bank_items_model.dart';
 import '../cubit/new_beneficiary_cubit.dart';
 
 class BankNamesDropDown extends StatelessWidget {
-  final Function(BankItemsModel bank) onChanged;
-  final Function() onSearch;
 
   const BankNamesDropDown({
     super.key,
-    required this.onChanged,
-    required this.onSearch,
   });
 
   @override
@@ -27,7 +23,7 @@ class BankNamesDropDown extends StatelessWidget {
       drawerListviewShrink: false,
       searchText: "Search placeholder",
       onSearch: (value) {
-        onSearch;
+        (){};
         // setState(() {});
       },
       items: (searchValue) {
@@ -47,7 +43,7 @@ class BankNamesDropDown extends StatelessWidget {
             .toList();
       },
       onChange: (value, index) {
-        onChanged(value);
+        context.read<NewBeneficiaryCubit>().bankChanged(value);
         print(value.bankName);
       },
     );

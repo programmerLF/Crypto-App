@@ -40,37 +40,16 @@ class _NewBeneficiaryPageState extends State<NewBeneficiaryPage> {
                     children: [
                       Center(child: InitialsAvatar(theme: theme)),
                       const AppGap.m(),
-                      NameTextField(
-                        onChanged: (name) {
-                          print(name);
-                          context.read<NewBeneficiaryCubit>().nameChanged(name);
-                        },
-                      ),
+                      const NameTextField(),
                       const AppGap.m(),
-                      NicknameTextField(
-                        onChanged: (nickname) {
-                          context
-                              .read<NewBeneficiaryCubit>()
-                              .nicknameChanged(nickname);
-                        },
-                      ),
+                      const NicknameTextField(),
                       const AppGap.m(),
-                      BankNamesDropDown(
-                        onChanged: (bank) {
-                          context.read<NewBeneficiaryCubit>().bankChanged(bank);
-                        },
-                        onSearch: () {},
-                      ),
+                      const BankNamesDropDown(),
                       const AppGap.m(),
-                      IbanNumberTextField(
-                        onChanged: (iban) {
-                          context.read<NewBeneficiaryCubit>().ibanNumber(iban);
-                        },
-                      ),
+                      const IbanNumberTextField(),
                     ],
                   ),
                 ),
-
                 const ContinueButtonValidator()
               ],
             ),

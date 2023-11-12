@@ -1,22 +1,25 @@
 import 'package:kib_design_system/kib_design_system.dart';
 
+import '../../../../core/alert_msgs.dart';
+
 
 
 class ConsentAlertWidget extends StatelessWidget {
-  final String title;
-  final String content;
   const ConsentAlertWidget({
-    super.key, required this.title, required this.content,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AppAlert.information(
-      padding: const AppEdgeInsets.s(),
-      title: title,
-      content: content,
-      sticky: true,
-      onCloseSticky: () {},
+    return AppContainer(
+      margin: const AppEdgeInsets.only(bottom: AppGapSize.m),
+      child: AppAlert.information(
+        padding: const AppEdgeInsets.s(),
+        title: "Disclaimer",
+        content: CONSENT_ACTIVE_SESSIONS_ALERT,
+        sticky: true,
+        onCloseSticky: () {},
+      ),
     );
   }
 }

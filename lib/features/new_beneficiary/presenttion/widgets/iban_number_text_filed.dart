@@ -7,9 +7,9 @@ import 'package:kib_design_system/theme/data/data.dart';
 import '../cubit/new_beneficiary_cubit.dart';
 
 class IbanNumberTextField extends StatelessWidget {
-  final Function(String iban) onChanged;
+
   const IbanNumberTextField({
-    super.key, required this.onChanged,
+    super.key,
   });
 
   @override
@@ -19,7 +19,9 @@ class IbanNumberTextField extends StatelessWidget {
     return  AppTextField.text(
       tooltip: ibanErrorMsg(cubit),
       tooltipTextColor: ibanErrorMsgColor(cubit, theme),
-      onChanged: (value) => onChanged(value),
+      onChanged: (value) {
+        context.read<NewBeneficiaryCubit>().ibanNumber(value);
+      },
       label: "IBAN number",
     );
   }

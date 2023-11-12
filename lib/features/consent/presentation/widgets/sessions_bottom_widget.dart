@@ -1,5 +1,5 @@
 import 'package:kib_design_system/kib_design_system.dart';
-import '../../data/models/consent_active_sessions_model.dart';
+import '../../data/models/sessions_model.dart';
 import 'consent_widgets.dart';
 
 

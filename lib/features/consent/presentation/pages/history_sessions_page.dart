@@ -1,8 +1,7 @@
-import 'package:crypto_app/core/alert_msgs.dart';
 import 'package:flutter/material.dart';
 import 'package:kib_design_system/kib_design_system.dart';
 
-import '../../data/models/consent_active_sessions_model.dart';
+import '../../data/models/sessions_model.dart';
 import '../widgets/consent_widgets.dart';
 
 class HistorySessionsPage extends StatelessWidget {
@@ -29,8 +28,8 @@ class HistorySessionsPage extends StatelessWidget {
                         .length,
                     itemBuilder: (context, index) {
                       return SessionsWidget(
-                        sessionModel: SessionsModel
-                            .activeSessionsList[index],);
+                        sessionModel: SessionsModel.activeSessionsList[index],
+                        statusWidget:  StatusWidget(expired: SessionsModel.activeSessionsList[index].expired,),);
                     }),
               ],
             ),
